@@ -1,16 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from "vue-router";
-import { getDataFromUrl } from "@/tools/about-url.js";
 
 const router = useRouter();
-const urlQuery = ref({});
+const yrcode = ref('G7637221505975');
 const goRetrospect = () => {
-  router.push("/retrospect");
+  router.push({
+    path: "/retrospect",
+    query: {yrcode: yrcode.value}
+  });
 };
-onMounted(() => {
-  urlQuery.value = getDataFromUrl();
-});
 </script>
 
 <template>
@@ -28,9 +27,7 @@ onMounted(() => {
     </div>
     <div class="h-4"></div>
     <div class="w-full flex items-center justify-center">
-      <button class="w-7/12 border-none bg-white h-8 rounded-2xl">
-        <span class="letter-space-2 text-gray-600 text-sm">{{ urlQuery.yrcode }}</span>
-      </button>
+      <el-input v-model="yrcode" placeholder="请输入" style="width: 240px"/>
     </div>
     <div class="h-20"></div>
     <div @click="goRetrospect">
@@ -78,12 +75,22 @@ onMounted(() => {
   .letter-space-1 {
     letter-spacing: 5px;
   }
-  .letter-space-2 {
-    letter-spacing: 2px;
-  }
-
   .border-color-001 {
     border-color: rgba(151, 203, 230, 1);
+  }
+  :deep(.el-input__wrapper){
+    border-radius: 16px;
+    border-color: white;
+    outline: none;
+    box-shadow: none;
+    &.is-focus{
+      border-color: white;
+      box-shadow: none;
+    }
+    .el-input__inner{
+      text-align: center;
+      letter-spacing: 2px;
+    }
   }
 }
 </style>

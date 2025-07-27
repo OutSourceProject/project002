@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, nextTick, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
+import { getDataFromUrl } from "@/tools/about-url.js";
+
 const router = useRouter();
 let startX;
 let currentX;
@@ -9,13 +11,14 @@ let guideCurrentX;
 const popperOptions = {modifiers: [{name: 'offset', options: {offset: [50, 10]}}]};
 const popperStyle = {
   borderRadius: '16px',
-}
+};
 const activeIndex = ref(0);
 const guideActiveIndex = ref(0);
 const carouselBoxRef = ref(null);
 const guideCarouselBoxRef = ref(null);
 const carouselRef = ref(null);
 const guideCarouselRef = ref(null);
+const urlQuery = ref({});
 const handleTouchStart = (e) => {
   startX = e.touches[0].clientX;
   currentX = startX;
@@ -75,10 +78,11 @@ const carouselChange = (current) => {
 const guideCarouselChange = (current) => {
   guideActiveIndex.value = current;
 };
-const goAbout = () =>{
+const goAbout = () => {
   router.push('/about');
-}
+};
 onMounted(() => {
+  urlQuery.value = getDataFromUrl();
   nextTick(() => {
     if (carouselBoxRef.value) {
       carouselBoxRef.value.addEventListener('touchstart', handleTouchStart);
@@ -111,7 +115,7 @@ onUnmounted(() => {
     <div class="swan-box"></div>
     <div class="h-5"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
-      <el-popover :popper-options="popperOptions" :show-arrow="false" placement="bottom" :popper-style="popperStyle">
+      <el-popover :popper-options="popperOptions" :popper-style="popperStyle" :show-arrow="false" placement="bottom">
         <div class="flex items-center justify-between" @click="goAbout">
           <img alt="" class="w-5" src="@/assets/images/snowflake.png"/>
           <span class="font-bold text-gray-700 text-base mr-3">关于我们</span>
@@ -305,7 +309,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="border-background w-14 h-14 flex items-center justify-center">
-          <div class="text-xs">
+          <div class="text-xs" @click="goAbout">
             <p>关于</p>
             <p>我们</p>
           </div>
