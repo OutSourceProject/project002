@@ -59,10 +59,7 @@ onUnmounted(() => {
   <div class="third-page">
     <div class="h-5"></div>
     <div class="w-full flex justify-between items-center px-6 box-border">
-      <div class="w-8 h-5 flex flex-col gap-y-1">
-        <div class="w-6 h-1 bg-white rounded"></div>
-        <div class="w-6 h-1 bg-white rounded"></div>
-      </div>
+      <div class="w-8 h-5 flex flex-col gap-y-1"></div>
       <div class="h-5">
         <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
       </div>
@@ -153,6 +150,9 @@ $container_width: calc(100vw - 80px);
   background: rgba(234, 234, 234, 1);
   height: 100%;
   @apply relative;
+  :deep(.el-dropdown){
+    outline: none;
+  }
 
   .guide-carousel-box {
     position: relative;

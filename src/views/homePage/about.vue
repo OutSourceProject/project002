@@ -1,11 +1,10 @@
 <script setup>
-
-import FirstPage from "@/views/homePage/components/FirstPage.vue";
+import ThirdPage from "@/views/homePage/components/ThirdPage.vue";
 </script>
 
 <template>
   <div class="home-page">
-    <FirstPage/>
+    <ThirdPage/>
   </div>
 </template>
 

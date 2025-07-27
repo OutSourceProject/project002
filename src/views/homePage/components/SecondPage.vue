@@ -1,10 +1,15 @@
 <script setup>
 import { ref, onMounted, nextTick, onUnmounted } from 'vue';
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 let startX;
 let currentX;
 let guideStartX;
 let guideCurrentX;
+const popperOptions = {modifiers: [{name: 'offset', options: {offset: [50, 10]}}]};
+const popperStyle = {
+  borderRadius: '16px',
+}
 const activeIndex = ref(0);
 const guideActiveIndex = ref(0);
 const carouselBoxRef = ref(null);
@@ -29,9 +34,9 @@ const handleTouchEnd = (e) => {
   const diff = startX - currentX;
   const threshold = 10;
   if (diff > threshold) {
-    carouselRef.value.next()
+    carouselRef.value.next();
   } else if (diff < -threshold) {
-    carouselRef.value.prev()
+    carouselRef.value.prev();
   }
   startX = 0;
   currentX = 0;
@@ -52,14 +57,14 @@ const guideHandleTouchEnd = (e) => {
   }
 
   const diff = guideStartX - guideCurrentX;
-  if(!diff){
+  if (!diff) {
     return;
   }
   const threshold = 10;
   if (diff > threshold) {
     guideCarouselRef.value.next();
   } else if (diff < -threshold) {
-    guideCarouselRef.value.prev()
+    guideCarouselRef.value.prev();
   }
   guideStartX = 0;
   guideCurrentX = 0;
@@ -70,6 +75,9 @@ const carouselChange = (current) => {
 const guideCarouselChange = (current) => {
   guideActiveIndex.value = current;
 };
+const goAbout = () =>{
+  router.push('/about');
+}
 onMounted(() => {
   nextTick(() => {
     if (carouselBoxRef.value) {
@@ -103,10 +111,18 @@ onUnmounted(() => {
     <div class="swan-box"></div>
     <div class="h-5"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
-      <div class="w-8 h-5 flex flex-col gap-y-1">
-        <div class="w-6 h-1 bg-white rounded"></div>
-        <div class="w-6 h-1 bg-white rounded"></div>
-      </div>
+      <el-popover :popper-options="popperOptions" :show-arrow="false" placement="bottom" :popper-style="popperStyle">
+        <div class="flex items-center justify-between" @click="goAbout">
+          <img alt="" class="w-5" src="@/assets/images/snowflake.png"/>
+          <span class="font-bold text-gray-700 text-base mr-3">关于我们</span>
+        </div>
+        <template #reference>
+          <div class="w-8 h-5 flex flex-col gap-y-1">
+            <div class="w-6 h-1 bg-white rounded"></div>
+            <div class="w-6 h-1 bg-white rounded"></div>
+          </div>
+        </template>
+      </el-popover>
       <div class="h-5">
         <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
       </div>
@@ -404,8 +420,8 @@ onUnmounted(() => {
           ref="guideCarouselRef"
           :activeIndex="guideActiveIndex"
           :autoplay="false"
-          indicator-position="outside"
           arrow="always"
+          indicator-position="outside"
           @change="guideCarouselChange"
       >
         <el-carousel-item>

@@ -8,6 +8,16 @@ const router = createRouter({
       name: 'homePage',
       component: () => import('@/views/homePage/index.vue'),
     },
+    {
+      path: '/retrospect',
+      name: 'retrospect',
+      component: () => import('@/views/homePage/retrospect.vue'),
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('@/views/homePage/about.vue'),
+    },
   ],
 })
 
