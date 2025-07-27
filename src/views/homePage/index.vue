@@ -2,11 +2,12 @@
 
 import FirstPage from "@/views/homePage/components/FirstPage.vue";
 import SecondPage from "@/views/homePage/components/SecondPage.vue";
+import ThirdPage from "@/views/homePage/components/ThirdPage.vue";
 </script>
 
 <template>
   <div class="home-page">
-    <SecondPage/>
+    <ThirdPage/>
   </div>
 </template>
 
