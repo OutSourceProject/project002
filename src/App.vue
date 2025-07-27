@@ -26,7 +26,7 @@ $footer-height: 40px;
 
   #app {
     width: 100%;
-    height: calc(100vh - $footer-height);
+    height: 100%;
   }
 
   .footer-box {
@@ -35,6 +35,8 @@ $footer-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    bottom: 0;
 
     a {
       color: rgba(102, 102, 102, 0.93);
