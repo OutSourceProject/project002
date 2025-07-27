@@ -8,30 +8,30 @@
       <img alt="" src="@/assets/images/text001.png"/>
     </div>
     <div class="h-36"></div>
-    <div class="w-full flex align-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <span class="font-bold text-sm">每一克的温暖·皆可溯源</span>
     </div>
     <div class="h-1"></div>
-    <div class="w-full flex align-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <span class="text-gray-400 text-sm">查看羽绒来源与检验检测报告</span>
     </div>
     <div class="h-4"></div>
-    <div class="w-full flex align-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <button class="w-7/12 border-none bg-white h-8 rounded-2xl">G7637221505975</button>
     </div>
     <div class="h-20"></div>
-    <div class="w-full flex align-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <span class="text-gray-500 text-sm">立即追溯</span>
     </div>
     <div class="h-2"></div>
-    <div class="w-full flex align-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <div class="w-10 h-10 rounded-full border-2 border-solid border-color-001"></div>
     </div>
-    <div class="fixed bottom-20 w-full flex align-center justify-between px-10 box-border">
-      <div class="w-10 h-10 flex align-center justify-start">
+    <div class="fixed bottom-20 w-full flex items-center justify-between px-10 box-border">
+      <div class="w-10 h-10 flex items-center justify-start">
         <img alt="" class="w-full" src="@/assets/images/snowflake.png"/>
       </div>
-      <div class="h-10 flex align-center justify-end">
+      <div class="h-10 flex items-center justify-end">
         <span class="text-gray-400 text-sm letter-space-1">羽丰羽城</span>
       </div>
     </div>
