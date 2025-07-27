@@ -1,3 +1,4 @@
+import '@/assets/styles/reset.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 import '@/assets/styles/index.scss'

@@ -56,6 +56,9 @@ export default defineConfig(({ mode }) => {
   }
   return {
     plugins: plugins,
+    server: {
+      host: '192.168.31.219',
+    },
     esbuild: {
       drop: isProduction ? ['console', 'debugger'] : [],
       pure: isProduction ? ['console.log', 'console.info', 'debugger'] : [],
