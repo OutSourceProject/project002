@@ -37,6 +37,7 @@ $footer-height: 40px;
     justify-content: center;
     position: fixed;
     bottom: 0;
+    font-size: 12px;
 
     a {
       color: rgba(102, 102, 102, 0.93);

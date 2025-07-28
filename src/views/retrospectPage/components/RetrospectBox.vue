@@ -84,6 +84,9 @@ const goReport = () => {
 const goAbout = () => {
   router.push('/about');
 };
+const goAboutMe = () => {
+  router.push('/aboutMe');
+};
 const goLicense = () => {
   router.push('/license');
 };
@@ -122,8 +125,8 @@ onUnmounted(() => {
     <div class="h-5"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
       <el-popover :popper-options="popperOptions" :popper-style="popperStyle" :show-arrow="false" placement="bottom">
-        <div class="flex items-center justify-between" @click="goAbout">
-          <img alt="" class="w-5" src="../../../assets/images/snowflake.png"/>
+        <div class="flex items-center justify-between" @click="goAboutMe">
+          <img alt="" class="w-5" src="@/assets/images/avatar.png" />
           <span class="font-bold text-gray-700 text-base mr-3">关于我们</span>
         </div>
         <template #reference>
@@ -134,14 +137,14 @@ onUnmounted(() => {
         </template>
       </el-popover>
       <div class="h-5">
-        <img alt="/" class="h-full w-auto" src="../../../assets/images/snowflake-text001.png">
+        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
       </div>
     </div>
     <div class="h-80"></div>
     <div class="h-10"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
       <div class="h-10 flex items-center justify-end">
-        <img alt="" class="w-10" src="../../../assets/images/snowflake.png"/>
+        <img alt="" class="w-10" src="@/assets/images/snowflake.png"/>
       </div>
       <div class="h-10 flex items-center justify-end">
         <span class="text-white text-sm letter-space-1">羽丰羽城</span>
@@ -188,13 +191,13 @@ onUnmounted(() => {
     <div class="container-box relative z-1">
       <div class="container-width bg-white rounded-2xl flex items-center justify-between p-10 box-border">
         <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-full" src="../../../assets/images/zhangyang.png"/>
+          <img alt="" class="w-full" src="@/assets/images/zhangyang.png"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
           <span class="text-gray-600 opacity-80">x</span>
         </div>
         <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-full" src="../../../assets/images/snowflake-text002.png"/>
+          <img alt="" class="w-full" src="@/assets/images/snowflake-text002.png"/>
         </div>
       </div>
     </div>
@@ -301,7 +304,7 @@ onUnmounted(() => {
     <div class="h-6"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
-        <img alt="" class="w-full" src="../../../assets/images/border001.png">
+        <img alt="" class="w-full" src="@/assets/images/border001.png">
       </div>
     </div>
     <div class="h-6"></div>
@@ -331,7 +334,7 @@ onUnmounted(() => {
     <div class="h-6"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
-        <img alt="" class="w-full" src="../../../assets/images/border001.png">
+        <img alt="" class="w-full" src="@/assets/images/border001.png">
       </div>
     </div>
     <div class="h-10"></div>
@@ -351,7 +354,7 @@ onUnmounted(() => {
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="../../../assets/images/small-log001.png"/>
+          <img alt="" class="w-2/3" src="@/assets/images/small-log001.png"/>
         </div>
         <div class="w-3/4">
           <p class="text-xs text-gray-500">
@@ -367,7 +370,7 @@ onUnmounted(() => {
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="../../../assets/images/small-log002.png"/>
+          <img alt="" class="w-2/3" src="@/assets/images/small-log002.png"/>
         </div>
         <div class="w-3/4">
           <p class="text-xs text-gray-500">
@@ -382,7 +385,7 @@ onUnmounted(() => {
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="../../../assets/images/small-log003.png"/>
+          <img alt="" class="w-2/3" src="@/assets/images/small-log003.png"/>
         </div>
         <div class="w-3/4">
           <p class="text-xs text-gray-500">
@@ -399,7 +402,7 @@ onUnmounted(() => {
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="../../../assets/images/small-log004.png"/>
+          <img alt="" class="w-2/3" src="@/assets/images/small-log004.png"/>
         </div>
         <div class="w-3/4">
           <p class="text-xs text-gray-500">
@@ -437,7 +440,7 @@ onUnmounted(() => {
         <el-carousel-item>
           <div class="guide-carousel-container">
             <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="../../../assets/images/icon001.png"/>
+              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
             </div>
             <div class="h-2"></div>
             <div class="w-full flex items-center justify-start font-bold text-xl">
@@ -458,7 +461,7 @@ onUnmounted(() => {
         <el-carousel-item>
           <div class="guide-carousel-container">
             <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="../../../assets/images/icon001.png"/>
+              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
             </div>
             <div class="h-2"></div>
             <div class="w-full flex items-center justify-start font-bold text-xl">
@@ -479,7 +482,7 @@ onUnmounted(() => {
         <el-carousel-item>
           <div class="guide-carousel-container">
             <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="../../../assets/images/icon001.png"/>
+              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
             </div>
             <div class="h-2"></div>
             <div class="w-full flex items-center justify-start font-bold text-xl">
@@ -500,7 +503,7 @@ onUnmounted(() => {
         <el-carousel-item>
           <div class="guide-carousel-container">
             <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="../../../assets/images/icon001.png"/>
+              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
             </div>
             <div class="h-2"></div>
             <div class="w-full flex items-center justify-start font-bold text-xl">
@@ -719,7 +722,7 @@ $container_width: calc(100vw - 80px);
       }
 
       .bg-08 {
-        background: linear-gradient(to right, #7e7e7e 0%, #7e7e7e 5%, #ffffff 20%, #ffffff 100%);
+        background: linear-gradient(to right, #ffffff 0%, #ffffff 5%, #ffffff 20%, #ffffff 100%);
       }
 
       .border-background {
