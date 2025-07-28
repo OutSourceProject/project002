@@ -51,7 +51,7 @@ onMounted(() => {
         <img alt="" class="w-full" src="@/assets/images/snowflake.png"/>
       </div>
       <div class="h-10 flex items-center justify-end">
-        <span class="text-gray-400 text-sm letter-space-1">羽丰羽城</span>
+        <span class="text-gray-400 text-sm letter-space-1">羽丰羽绒</span>
       </div>
     </div>
 
