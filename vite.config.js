@@ -66,8 +66,6 @@ export default defineConfig(({ mode }) => {
       }
     },
     esbuild: {
-      drop: isProduction ? ['console', 'debugger'] : [],
-      pure: isProduction ? ['console.log', 'console.info', 'debugger'] : [],
       legalComments: 'none',
     },
     resolve: {
