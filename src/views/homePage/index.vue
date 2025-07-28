@@ -1,11 +1,11 @@
 <script setup>
 
-import FirstPage from "@/views/homePage/components/FirstPage.vue";
+import HomeBox from "@/views/homePage/components/HomeBox.vue";
 </script>
 
 <template>
   <div class="home-page">
-    <FirstPage/>
+    <HomeBox/>
   </div>
 </template>
 

@@ -58,6 +58,12 @@ export default defineConfig(({ mode }) => {
     plugins: plugins,
     server: {
       host: '192.168.31.219',
+      proxy:{
+        '/images': {
+          target: 'http://134.175.82.108:9981/',
+          changeOrigin: true,
+        }
+      }
     },
     esbuild: {
       drop: isProduction ? ['console', 'debugger'] : [],
