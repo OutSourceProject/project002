@@ -65,10 +65,10 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="h-6"></div>
-    <div class="w-full px-10 box-border flex items-center justify-start">
+    <div class="w-full box-border flex items-center justify-start">
       <span class="font-bold text-xl text-gray-700">关于我们</span>
     </div>
-    <div class="w-full px-10 box-border flex items-center justify-start">
+    <div class="w-full box-border flex items-center justify-start">
       <span class="text-xl text-gray-400">ABOUT US</span>
     </div>
     <div class="h-5"></div>
@@ -86,7 +86,7 @@ onUnmounted(() => {
       >
         <el-carousel-item>
           <div class="guide-carousel-container">
-            <div class="w-full flex items-center justify-start">
+            <div class="w-full flex items-center justify-center">
               <img alt="" class="w-full" src="@/assets/images/picture001.png"/>
             </div>
             <div class="h-5"></div>
@@ -124,13 +124,13 @@ onUnmounted(() => {
             <div class="text-sm  text-gray-400 mb-3">
               <p class="text-xs">
                 羽丰羽绒品牌焕新升级，重磅推出“湖羽系统”。该系统由中国羽绒工业协会会员企业羽丰羽绒有限公司研发运营，是
-                <span class="text-gray-900 font-bold">【可追湖羽绒信息平台】</span>
+                <span class="text-gray-900 font-bold">【可追溯羽绒信息平台】</span>
                 ，并已加入由中国羽绒工业协会主导的
                 <span class="text-gray-900 font-bold">全球羽绒追溯系统</span>
               </p>
               <div class="h-4"></div>
               <p class="text-xs">
-                符合“湖羽安心羽绒”标准及技术要求、通过系统实现全程追溯的羽绒材料，正式命名为
+                符合“溯羽安心羽绒”标准及技术要求、通过系统实现全程追溯的羽绒材料，正式命名为
                 <span class="text-gray-900 mr-2 font-bold">溯羽安心羽绒</span>
               </p>
             </div>
@@ -144,11 +144,12 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 $guide-carousel-container-height: 450px;
-$container_width: calc(100vw - 80px);
 .third-page {
   width: 100%;
   background: rgba(234, 234, 234, 1);
   height: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   @apply relative;
   :deep(.el-dropdown) {
     outline: none;
@@ -160,12 +161,10 @@ $container_width: calc(100vw - 80px);
     box-sizing: border-box;
 
     .guide-carousel-container {
-      width: $container_width;
       height: $guide-carousel-container-height;
     }
 
     :deep(.el-carousel) {
-      width: calc(100vw - 80px);
       margin: 0 auto;
       position: static;
 
