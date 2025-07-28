@@ -1,12 +1,11 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+export const useRetrospectRememberStore = defineStore('retrospectRemember', () => {
+  const pageScrollTop = ref(false)
+  const setPageScrollTop = (val)=>{
+    pageScrollTop.value = val
   }
 
-  return { count, doubleCount, increment }
+  return { pageScrollTop, setPageScrollTop }
 })

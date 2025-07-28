@@ -3,7 +3,7 @@ import RetrospectBox from "@/views/retrospectPage/components/RetrospectBox.vue";
 </script>
 
 <template>
-  <div class="home-page">
+  <div class="home-page" id="home_page">
     <RetrospectBox/>
   </div>
 </template>

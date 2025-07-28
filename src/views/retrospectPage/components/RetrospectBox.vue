@@ -1,8 +1,10 @@
 <script setup>
-import { ref, onMounted, nextTick, onUnmounted } from 'vue';
+import { ref, onMounted, nextTick, onUnmounted, watch } from 'vue';
 import { useRouter } from "vue-router";
 import { getDataFromUrl } from "@/tools/about-url.js";
+import { useRetrospectRememberStore } from "@/stores/counter.js";
 
+const useRetrospectRemember = useRetrospectRememberStore();
 const router = useRouter();
 let startX;
 let currentX;
@@ -19,6 +21,10 @@ const guideCarouselBoxRef = ref(null);
 const carouselRef = ref(null);
 const guideCarouselRef = ref(null);
 const urlQuery = ref({});
+const setScrollTop = () => {
+  const homePage = document.getElementById("home_page");
+  useRetrospectRemember.setPageScrollTop(homePage.scrollTop || 0);
+};
 const handleTouchStart = (e) => {
   startX = e.touches[0].clientX;
   currentX = startX;
@@ -79,15 +85,19 @@ const guideCarouselChange = (current) => {
   guideActiveIndex.value = current;
 };
 const goReport = () => {
+  setScrollTop();
   router.push('/report');
 };
 const goAbout = () => {
+  setScrollTop();
   router.push('/about');
 };
 const goAboutMe = () => {
+  setScrollTop();
   router.push('/aboutMe');
 };
 const goLicense = () => {
+  setScrollTop();
   router.push('/license');
 };
 onMounted(() => {
@@ -117,6 +127,13 @@ onUnmounted(() => {
     guideCarouselBoxRef.value.removeEventListener('touchend', guideHandleTouchEnd);
   }
 });
+watch(() => useRetrospectRemember.pageScrollTop, (val) => {
+  nextTick(() => {
+    if (document.getElementById('home_page')) {
+      document.getElementById('home_page').scrollTop = val;
+    }
+  });
+}, {immediate: true});
 </script>
 
 <template>
@@ -126,7 +143,7 @@ onUnmounted(() => {
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
       <el-popover :popper-options="popperOptions" :popper-style="popperStyle" :show-arrow="false" placement="bottom">
         <div class="flex items-center justify-between" @click="goAboutMe">
-          <img alt="" class="w-5" src="@/assets/images/avatar.png" />
+          <img alt="" class="w-5" src="@/assets/images/avatar.png"/>
           <span class="font-bold text-gray-700 text-base mr-3">关于我们</span>
         </div>
         <template #reference>

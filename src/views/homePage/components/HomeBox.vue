@@ -1,11 +1,13 @@
 <script setup>
-import { ref,onMounted } from 'vue';
+import { ref,onMounted,watch } from 'vue';
 import { useRouter } from "vue-router";
 import { getDataFromUrl } from "@/tools/about-url.js";
-
+import { useRetrospectRememberStore } from "@/stores/counter.js";
+const useRetrospectRemember = useRetrospectRememberStore()
 const router = useRouter();
 const yrcode = ref('');
 const goRetrospect = () => {
+  useRetrospectRemember.setPageScrollTop(0)
   router.push({
     path: "/retrospect",
     query: {yrcode: yrcode.value}
