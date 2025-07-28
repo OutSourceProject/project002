@@ -98,7 +98,7 @@ onUnmounted(() => {
             <el-carousel-item v-for="(image,i) in imageData" :key="`iamge_${i}_${image.id}`">
               <div class="carousel-container">
                 <div class="w-full flex items-center justify-center">
-                  <img :src="`//134.175.82.108:9981${image.url}`" alt="" class="w-full"/>
+                  <img :src="image.url" alt="" class="w-full"/>
                 </div>
               </div>
             </el-carousel-item>

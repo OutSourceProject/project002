@@ -13,7 +13,7 @@ const goRetrospect = () => {
 };
 onMounted(() => {
   const urlQuery = getDataFromUrl();
-  yrcode.value = urlQuery.yrcode
+  yrcode.value = urlQuery?.yrcode || ''
 })
 </script>
 
