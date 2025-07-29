@@ -3,7 +3,7 @@
 import { Close } from "@element-plus/icons-vue";
 import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import axios from "axios";
-import { getDataFromUrl } from '@/tools/about-url.js'
+import { getDataFromUrl } from '@/tools/about-url.js';
 
 let startX;
 let currentX;
@@ -11,7 +11,7 @@ const activeIndex = ref(0);
 const carouselBoxRef = ref(null);
 const carouselRef = ref(null);
 const imageData = ref([]);
-const yrcode = ref('')
+const yrcode = ref('');
 const goBack = () => {
   window.history.back();
 };
@@ -51,22 +51,21 @@ const handleTouchEnd = (e) => {
  */
 const getImageList = async () => {
   try {
-    const params = new URLSearchParams({ yrcode: yrcode.value })
-    const response = await axios.get(`api/report/getReportPublic?${params}`)
+    const params = new URLSearchParams({yrcode: yrcode.value});
+    const response = await axios.get(`api/report/getReportPublic?${params}`);
     imageData.value = response.data.data.data?.reportImages || [];
-    console.log(imageData.value)
+    console.log(imageData.value);
   } catch (error) {
-    console.error('Error fetching getImageList info:', error)
-    throw error
+    console.error('Error fetching getImageList info:', error);
+    throw error;
   }
 };
 
 
-
 onMounted(() => {
-  const urlQuery = getDataFromUrl()
-  yrcode.value = urlQuery?.yrcode || localStorage.getItem("yrcode")
-  console.log(localStorage.getItem("yrcode"))
+  const urlQuery = getDataFromUrl();
+  yrcode.value = urlQuery?.yrcode || localStorage.getItem("yrcode");
+  console.log(localStorage.getItem("yrcode"));
   getImageList();
   nextTick(() => {
     if (carouselBoxRef.value) {
@@ -110,8 +109,13 @@ onUnmounted(() => {
           >
             <el-carousel-item v-for="(image,i) in imageData" :key="`iamge_${i}_${image.id}`">
               <div class="carousel-container">
-                <div class="w-full flex items-center justify-center">
-                  <img :src="image" alt="" class="w-full"/>
+                <div>
+                  <div class="w-full flex items-center justify-center">
+                    <img :src="image" alt="" class="w-full"/>
+                  </div>
+                  <div v-if="i===0" class="w-full flex items-center justify-center mt-5">
+                    <span class="color-999999 font-size-16">(本报告仅限本批次羽绒原始状态)</span>
+                  </div>
                 </div>
               </div>
             </el-carousel-item>
@@ -125,7 +129,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-$carousel-container-height: 500px;
+$carousel-container-height: 540px;
 $container_width: calc(100vw - 80px);
 .report-page {
   width: 100%;
@@ -185,6 +189,7 @@ $container_width: calc(100vw - 80px);
       }
     }
   }
+
   .arrow-left {
     :deep(.el-carousel) {
       .el-carousel__arrow {

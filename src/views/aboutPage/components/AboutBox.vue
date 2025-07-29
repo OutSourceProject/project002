@@ -58,7 +58,7 @@ onUnmounted(() => {
 <template>
   <div class="third-page">
     <div class="h-5"></div>
-    <div class="w-full flex justify-between items-center px-6 box-border">
+    <div class="w-full flex justify-between items-center box-border">
       <div class="w-8 h-5 flex flex-col gap-y-1"></div>
       <div class="h-5">
         <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
@@ -66,10 +66,10 @@ onUnmounted(() => {
     </div>
     <div class="h-6"></div>
     <div class="w-full box-border flex items-center justify-start">
-      <span class="font-bold text-xl text-gray-700">关于我们</span>
+      <span class="font-bold font-size-24 color-595757">关于我们</span>
     </div>
     <div class="w-full box-border flex items-center justify-start">
-      <span class="text-xl text-gray-400">ABOUT US</span>
+      <span class="font-size-24 col0r-999999">ABOUT US</span>
     </div>
     <div class="h-5"></div>
     <div
@@ -90,11 +90,11 @@ onUnmounted(() => {
               <img alt="" class="w-full" src="@/assets/images/picture001.png"/>
             </div>
             <div class="h-5"></div>
-            <div class="text-sm  text-gray-400 mb-3">
-              <p class="text-xs">
-                <span class="text-gray-900 mr-2 font-bold">羽丰羽绒制品有限公司</span>
+            <div class="mb-3">
+              <p class="font-size-16 color-999999 leading-5">
+                <span class="color-595757 mr-2 font-bold">羽丰羽绒制品有限公司</span>
                 是一家集原材料收集、羽绒贸易的企业，拥有全自动羽毛水洗连续生产线，包括预分、除尘、水洗、干燥、冷却精分全套羽毛、羽绒检验设备及仪器。能按客户要求生产各种规格的优质鸭绒、水洗羽绒、毛片以及羽绒制品。
-                <span class="text-gray-900 mr-2 font-bold">是目前国内产品品种较多、规模较大的羽绒生产企业之一。</span>
+                <span class="color-595757 mr-2 font-bold">是目前国内产品品种较多、规模较大的羽绒生产企业之一。</span>
                 公司近些年的健康发展，在原材料采购、市场开发、市场营销等项目上具有丰富的经验，并已具备稳定的产品质量保证体系和广阔的市场空间，并一直与多家品牌企业建立良好的合作关系。
               </p>
             </div>
@@ -106,10 +106,10 @@ onUnmounted(() => {
               <img alt="" class="w-full" src="@/assets/images/picture002.png"/>
             </div>
             <div class="h-5"></div>
-            <div class="text-sm  text-gray-400 mb-3">
-              <p class="text-xs">
+            <div class="mb-3">
+              <p class="font-size-16 color-999999 leading-5">
                 公司成立以来，始终恪守
-                <span class="text-gray-900 mr-2 font-bold">“以质量求生存、以诚信求发展”</span>
+                <span class="color-595757 mr-2 font-bold">“以质量求生存、以诚信求发展”</span>
                 的经营理念，坚持诚信经营的宗旨，为广大客户提供质优价廉、最具竞争力的产品，赢得客户的信赖和好评。热忱欢迎国内外广大客户前来洽谈合作、共谋发展。
               </p>
             </div>
@@ -121,17 +121,17 @@ onUnmounted(() => {
               <img alt="" class="w-full" src="../../../assets/images/picture003.png"/>
             </div>
             <div class="h-5"></div>
-            <div class="text-sm  text-gray-400 mb-3">
-              <p class="text-xs">
+            <div class="mb-3">
+              <p class="font-size-16 color-999999 leading-5">
                 羽丰羽绒品牌焕新升级，重磅推出“溯羽系统”。该系统由【中国羽绒工业协会】会员企业羽丰羽绒有限公司研发运营，是
-                <span class="text-gray-900 font-bold">【可追溯羽绒信息平台】</span>
+                <span class="color-595757 font-bold">【可追溯羽绒信息平台】</span>
                 ，并已加入由中国羽绒工业协会主导的
                 <span class="text-gray-900 font-bold">【全球羽绒追溯系统】。</span>
               </p>
               <div class="h-4"></div>
-              <p class="text-xs">
+              <p class="font-size-16 color-999999 leading-5">
                 符合“溯羽安心羽绒”标准及技术要求、并通过溯羽系统实现全程追溯的羽绒材料，正式命名为
-                <span class="text-gray-900 mr-2 font-bold">“溯羽安心羽绒”。</span>
+                <span class="color-595757 mr-2 font-bold">“溯羽安心羽绒”。</span>
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
-$guide-carousel-container-height: 450px;
+$guide-carousel-container-height: 580px;
 .third-page {
   width: 100%;
   background: rgba(234, 234, 234, 1);

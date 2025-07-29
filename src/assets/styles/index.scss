@@ -1,3 +1,27 @@
 @use "@/assets/styles/element-plus/index.scss" as *;
 @use "element-plus/theme-chalk/src/index.scss" as *;
 @use "@/assets/styles/tailwind.scss";
+
+.color-595757 {
+  color: #595757;
+}
+
+.color-999999 {
+  color: #999999;
+}
+
+.color-97cbe6 {
+  color: #97cbe6;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
