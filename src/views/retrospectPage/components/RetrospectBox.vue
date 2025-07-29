@@ -626,7 +626,6 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-$carousel-container-height: 300px;
 $guide-carousel-container-height: 300px;
 $container_width: calc(100vw - 80px);
 .second-page {
@@ -650,76 +649,6 @@ $container_width: calc(100vw - 80px);
     position: relative;
     padding-top: 40px;
     box-sizing: border-box;
-
-    .carousel-container {
-      width: $container_width;
-      height: $carousel-container-height;
-      background: linear-gradient(to bottom, rgba(234, 234, 234, 0.3), rgba(255, 255, 255, 0.88));
-      @apply rounded-2xl flex items-center justify-center;
-    }
-
-    :deep(.el-carousel) {
-      width: calc(100vw - 80px);
-      margin: 0 auto;
-      position: static;
-
-      .el-carousel__container {
-        height: $carousel-container-height;
-      }
-
-      .el-carousel__item {
-        border-radius: 1rem;
-        .carousel-container{
-          .text-box{
-            opacity: 0;
-            transition: opacity .4s ease-in-out;
-          }
-        }
-        &.is-active{
-          .carousel-container{
-            .text-box{
-              opacity: 1;
-              transition: opacity .4s ease-in-out;
-            }
-          }
-        }
-      }
-
-      .el-carousel__arrow {
-        display: none;
-      }
-
-      .el-carousel__indicators--outside {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        width: 100%;
-        display: flex;
-        height: 40px;
-        align-items: flex-start;
-        justify-content: center;
-
-        .el-carousel__indicator--horizontal {
-          background-color: transparent !important;
-          opacity: 1 !important;
-          cursor: none;
-
-          .el-carousel__button {
-            background-color: white;
-            width: 6px;
-            height: 6px;
-            border-radius: 3px;
-          }
-
-          &.is-active {
-            .el-carousel__button {
-              width: 80px;
-            }
-          }
-        }
-      }
-    }
   }
 
   .guide-carousel-box {
