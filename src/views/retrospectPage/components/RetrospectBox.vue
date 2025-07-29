@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { getDataFromUrl } from '@/tools/about-url.js';
 import { useRetrospectRememberStore } from '@/stores/counter.js';
 import axios from 'axios';
+import CarouselTow from "@/views/retrospectPage/components/CarouselTow.vue";
 
 const useRetrospectRemember = useRetrospectRememberStore();
 const router = useRouter();
@@ -266,45 +267,7 @@ watch(
       </div>
     </div>
     <div ref="carouselBoxRef" class="carousel-box">
-      <el-carousel
-          ref="carouselRef"
-          :activeIndex="activeIndex"
-          :autoplay="false"
-          indicator-position="outside"
-          @change="carouselChange"
-      >
-        <el-carousel-item>
-          <div class="carousel-container">
-            <div class="py-14">
-              <p class="w-full text-center font-bold color-595757 font-size-20 mb-3">樱桃谷鸭</p>
-              <p class="w-full text-center color-999999 font-size-16 leading-relaxed">批次号：{{ batchNumInfo }}</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">原产地：中国山东</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">执行标准：{{ executiveStandard }}</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">生产商：羽丰羽绒有限公司</p>
-            </div>
-          </div>
-        </el-carousel-item>
-        <el-carousel-item>
-          <div class="carousel-container">
-            <div class="py-14">
-              <p class="w-full text-center font-bold color-595757 font-size-20 mb-3">樱桃谷鸭</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">英国樱桃谷农场</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">于20世纪50年代培育而成，</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">其亲本为中国北京鸭与英国</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">埃里斯伯里鸭。</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">后经全球优质养殖区</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">（如中国、欧洲等地）科学培育，</p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">
-                目前是我国养殖量最大的鸭品种之一。
-              </p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">
-                其通体洁白、绒朵蓬大、纤维细腻，
-              </p>
-              <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">是高品质羽绒的优选原料之一。</p>
-            </div>
-          </div>
-        </el-carousel-item>
-      </el-carousel>
+      <CarouselTow :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard"/>
     </div>
     <div class="h-20"></div>
     <div class="h-5"></div>
@@ -691,7 +654,7 @@ $container_width: calc(100vw - 80px);
     .carousel-container {
       width: $container_width;
       height: $carousel-container-height;
-      background: linear-gradient(#eaeaea, #ffffff);
+      background: linear-gradient(to bottom, rgba(234, 234, 234, 0.3), rgba(255, 255, 255, 0.88));
       @apply rounded-2xl flex items-center justify-center;
     }
 
@@ -706,6 +669,20 @@ $container_width: calc(100vw - 80px);
 
       .el-carousel__item {
         border-radius: 1rem;
+        .carousel-container{
+          .text-box{
+            opacity: 0;
+            transition: opacity .4s ease-in-out;
+          }
+        }
+        &.is-active{
+          .carousel-container{
+            .text-box{
+              opacity: 1;
+              transition: opacity .4s ease-in-out;
+            }
+          }
+        }
       }
 
       .el-carousel__arrow {
