@@ -23,6 +23,7 @@ const carouselRef = ref(null)
 const guideCarouselRef = ref(null)
 const yrcode = ref('')
 const batchNumInfo = ref('')
+const executiveStandard = ref('')
 const logo = ref('')
 const experimentalDetectionData = ref({
   downContent: '87.2',
@@ -148,6 +149,7 @@ const getBatchInfo = async () => {
     const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`)
     console.log(response.data.data.data.batchNum)
     batchNumInfo.value = response.data.data.data.batchNum
+    executiveStandard.value = response.data.data.data.executiveStandard
     console.log(batchNumInfo.value)
   } catch (error) {
     console.error('Error fetching batch info:', error)
@@ -277,7 +279,9 @@ watch(
               <p class="w-full text-center text-sm font-bold text-gray-900 mb-3">樱桃谷鸭</p>
               <p class="w-full text-center text-xs text-gray-400">批次号：{{ batchNumInfo }}</p>
               <p class="w-full text-center text-xs text-gray-400">原产地：中国山东</p>
-              <p class="w-full text-center text-xs text-gray-400">执行标准：GB/T 14272-2021</p>
+              <p class="w-full text-center text-xs text-gray-400">
+                执行标准：{{ executiveStandard }}
+              </p>
               <p class="w-full text-center text-xs text-gray-400">生产商：羽丰羽绒有限公司</p>
             </div>
           </div>
@@ -335,8 +339,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">绒子含量<span class="ml-5">{{experimentalDetectionData.downContent}}%</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.downContentRef}}%</span>
+          <span class="text-xs"
+            >绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span
+          >
+          <span class="text-xs">标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-01"></div>
@@ -346,8 +352,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">蓬松度<span class="ml-5">{{experimentalDetectionData.bulkiness}}cm</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.bulkinessRef}}cm</span>
+          <span class="text-xs"
+            >蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span
+          >
+          <span class="text-xs">标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-02"></div>
@@ -357,8 +365,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">清洁度<span class="ml-5">{{experimentalDetectionData.cleanliness}}mm</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.cleanlinessRef}}mm</span>
+          <span class="text-xs"
+            >清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness }}mm</span></span
+          >
+          <span class="text-xs">标准参考值:≥{{ experimentalDetectionData.cleanlinessRef }}mm</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-03"></div>
@@ -368,8 +378,14 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">羽绒+羽丝含量<span class="ml-5">{{experimentalDetectionData.downFeatherContent}}%</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.downFeatherContentRef}}%</span>
+          <span class="text-xs"
+            >羽绒+羽丝含量<span class="ml-5"
+              >{{ experimentalDetectionData.downFeatherContent }}%</span
+            ></span
+          >
+          <span class="text-xs"
+            >标准参考值:≥{{ experimentalDetectionData.downFeatherContentRef }}%</span
+          >
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-04"></div>
@@ -379,8 +395,12 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">陆禽毛<span class="ml-5">{{experimentalDetectionData.landFowlFeather}}%</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.landFowlFeatherRef}}%</span>
+          <span class="text-xs"
+            >陆禽毛<span class="ml-5">{{ experimentalDetectionData.landFowlFeather }}%</span></span
+          >
+          <span class="text-xs"
+            >标准参考值:≥{{ experimentalDetectionData.landFowlFeatherRef }}%</span
+          >
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-05"></div>
@@ -390,8 +410,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">残脂率<span class="ml-5">{{experimentalDetectionData.fatContent}}%</span></span>
-          <span class="text-xs">标准参考值:≥{{experimentalDetectionData.fatContentRef}}%</span>
+          <span class="text-xs"
+            >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
+          >
+          <span class="text-xs">标准参考值:≥{{ experimentalDetectionData.fatContentRef }}%</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-06"></div>
@@ -401,8 +423,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">杂质<span class="ml-5">{{experimentalDetectionData.impurities}}%</span></span>
-          <span class="text-xs">标准参考值:≤{{experimentalDetectionData.impuritiesRef}}%</span>
+          <span class="text-xs"
+            >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
+          >
+          <span class="text-xs">标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-07"></div>
@@ -412,8 +436,10 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="text-xs">异色毛绒<span class="ml-5">{{experimentalDetectionData.coloredDown}}%</span></span>
-          <span class="text-xs">标准参考值:≤{{experimentalDetectionData.coloredDownRef}}%</span>
+          <span class="text-xs"
+            >异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span
+          >
+          <span class="text-xs">标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
