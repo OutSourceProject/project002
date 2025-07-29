@@ -372,7 +372,7 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">羽绒+羽丝含量<span
+          <span class="color-999999 font-size-16">绒丝+羽丝含量<span
               class="ml-5"
           >{{ experimentalDetectionData.downFeatherContent }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.downFeatherContentRef }}%</span>
