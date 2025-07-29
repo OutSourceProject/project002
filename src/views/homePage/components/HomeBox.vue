@@ -16,6 +16,7 @@ const goRetrospect = () => {
 onMounted(() => {
   const urlQuery = getDataFromUrl();
   yrcode.value = urlQuery?.yrcode || ''
+  localStorage.setItem("yrcode",yrcode.value)
 })
 </script>
 

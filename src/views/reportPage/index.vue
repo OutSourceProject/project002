@@ -3,6 +3,7 @@
 import { Close } from "@element-plus/icons-vue";
 import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import axios from "axios";
+import { getDataFromUrl } from '@/tools/about-url.js'
 
 let startX;
 let currentX;
@@ -10,6 +11,7 @@ const activeIndex = ref(0);
 const carouselBoxRef = ref(null);
 const carouselRef = ref(null);
 const imageData = ref([]);
+const yrcode = ref('')
 const goBack = () => {
   window.history.back();
 };
@@ -47,13 +49,24 @@ const handleTouchEnd = (e) => {
 /**
  * 这里调用接口，获取图片
  */
-const getImageList = () => {
-  axios.get('/images').then((res) => {
-    console.log(res);
-    imageData.value = res?.data || [];
-  });
+const getImageList = async () => {
+  try {
+    const params = new URLSearchParams({ yrcode: yrcode.value })
+    const response = await axios.get(`api/report/getReportPublic?${params}`)
+    imageData.value = response.data.data.data?.reportImages || [];
+    console.log(imageData.value)
+  } catch (error) {
+    console.error('Error fetching getImageList info:', error)
+    throw error
+  }
 };
+
+
+
 onMounted(() => {
+  const urlQuery = getDataFromUrl()
+  yrcode.value = urlQuery?.yrcode || localStorage.getItem("yrcode")
+  console.log(localStorage.getItem("yrcode"))
   getImageList();
   nextTick(() => {
     if (carouselBoxRef.value) {
@@ -98,7 +111,7 @@ onUnmounted(() => {
             <el-carousel-item v-for="(image,i) in imageData" :key="`iamge_${i}_${image.id}`">
               <div class="carousel-container">
                 <div class="w-full flex items-center justify-center">
-                  <img :src="image.url" alt="" class="w-full"/>
+                  <img :src="image" alt="" class="w-full"/>
                 </div>
               </div>
             </el-carousel-item>

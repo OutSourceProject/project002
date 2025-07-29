@@ -57,13 +57,13 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: plugins,
     server: {
-      host: '192.168.31.219',
-      // proxy:{
-      //   '/images': {
-      //     target: 'http://134.175.82.108:9981/',
-      //     changeOrigin: true,
-      //   }
-      // }
+      //host: '0.0.0.0',
+      proxy: {
+        '/api': {
+          target: 'https://admin.yufengyurong.com/',
+          changeOrigin: true,
+        },
+      },
     },
     esbuild: {
       legalComments: 'none',
