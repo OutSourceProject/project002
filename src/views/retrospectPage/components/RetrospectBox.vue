@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, nextTick, onUnmounted, watch } from 'vue';
+import { ref, onMounted, nextTick, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { getDataFromUrl } from '@/tools/about-url.js';
 import { useRetrospectRememberStore } from '@/stores/counter.js';
@@ -9,24 +9,14 @@ import CarouselRetrospectThreee from "@/views/retrospectPage/components/Carousel
 
 const useRetrospectRemember = useRetrospectRememberStore();
 const router = useRouter();
-let startX;
-let currentX;
-let guideStartX;
-let guideCurrentX;
 const popperOptions = {modifiers: [{name: 'offset', options: {offset: [50, 10]}}]};
 const popperStyle = {
   borderRadius: '16px',
-}
-const activeIndex = ref(0)
-const guideActiveIndex = ref(0)
-const carouselBoxRef = ref(null)
-const guideCarouselBoxRef = ref(null)
-const carouselRef = ref(null)
-const guideCarouselRef = ref(null)
-const yrcode = ref('')
-const batchNumInfo = ref('')
+};
+const yrcode = ref('');
+const batchNumInfo = ref('');
+const logo = ref('');
 const executiveStandard = ref('')
-const logo = ref('')
 const experimentalDetectionData = ref({
   downContent: '87.2',
   downContentRef: '85',
@@ -49,65 +39,6 @@ const setScrollTop = () => {
   const homePage = document.getElementById('home_page');
   useRetrospectRemember.setPageScrollTop(homePage.scrollTop || 0);
 };
-const handleTouchStart = (e) => {
-  startX = e.touches[0].clientX;
-  currentX = startX;
-};
-const handleTouchMove = (e) => {
-  if (!startX) {
-    return;
-  }
-  currentX = e.touches[0].clientX;
-};
-const handleTouchEnd = (e) => {
-  if (!startX) {
-    return;
-  }
-
-  const diff = startX - currentX;
-  const threshold = 10;
-  if (diff > threshold) {
-    carouselRef.value.next();
-  } else if (diff < -threshold) {
-    carouselRef.value.prev();
-  }
-  startX = 0;
-  currentX = 0;
-};
-const guideHandleTouchStart = (e) => {
-  guideStartX = e.touches[0].clientX;
-  guideCurrentX = guideStartX;
-};
-const guideHandleTouchMove = (e) => {
-  if (!guideStartX) {
-    return;
-  }
-  guideCurrentX = e.touches[0].clientX;
-};
-const guideHandleTouchEnd = (e) => {
-  if (!guideStartX) {
-    return;
-  }
-
-  const diff = guideStartX - guideCurrentX;
-  if (!diff) {
-    return;
-  }
-  const threshold = 10;
-  if (diff > threshold) {
-    guideCarouselRef.value.next();
-  } else if (diff < -threshold) {
-    guideCarouselRef.value.prev();
-  }
-  guideStartX = 0;
-  guideCurrentX = 0;
-};
-const carouselChange = (current) => {
-  activeIndex.value = current;
-};
-const guideCarouselChange = (current) => {
-  guideActiveIndex.value = current;
-};
 const goReport = () => {
   setScrollTop();
   router.push('/report');
@@ -126,18 +57,6 @@ const goLicense = () => {
 };
 
 onMounted(() => {
-  nextTick(() => {
-    if (carouselBoxRef.value) {
-      carouselBoxRef.value.addEventListener('touchstart', handleTouchStart);
-      carouselBoxRef.value.addEventListener('touchmove', handleTouchMove);
-      carouselBoxRef.value.addEventListener('touchend', handleTouchEnd);
-    }
-    if (guideCarouselBoxRef.value) {
-      guideCarouselBoxRef.value.addEventListener('touchstart', guideHandleTouchStart);
-      guideCarouselBoxRef.value.addEventListener('touchmove', guideHandleTouchMove);
-      guideCarouselBoxRef.value.addEventListener('touchend', guideHandleTouchEnd);
-    }
-  });
   const urlQuery = getDataFromUrl();
   yrcode.value = urlQuery?.yrcode || '';
   getBatchInfo();
@@ -205,19 +124,6 @@ const getExperimentalDetectionData = async () => {
     throw error;
   }
 };
-
-onUnmounted(() => {
-  if (carouselBoxRef.value) {
-    carouselBoxRef.value.removeEventListener('touchstart', handleTouchStart);
-    carouselBoxRef.value.removeEventListener('touchmove', handleTouchMove);
-    carouselBoxRef.value.removeEventListener('touchend', handleTouchEnd);
-  }
-  if (guideCarouselBoxRef.value) {
-    guideCarouselBoxRef.value.removeEventListener('touchstart', guideHandleTouchStart);
-    guideCarouselBoxRef.value.removeEventListener('touchmove', guideHandleTouchMove);
-    guideCarouselBoxRef.value.removeEventListener('touchend', guideHandleTouchEnd);
-  }
-});
 watch(
     () => useRetrospectRemember.pageScrollTop,
     (val) => {
@@ -554,7 +460,6 @@ $container_width: calc(100vw - 80px);
 
     .container-width {
       width: $container_width;
-
       .bg-01 {
         background: linear-gradient(
                 to right,

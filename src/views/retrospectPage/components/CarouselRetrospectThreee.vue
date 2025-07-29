@@ -6,7 +6,7 @@ let currentX;
 const activeIndex = ref(0);
 const carouselRef = ref(null);
 const translateVal = computed(() => {
-  return `translateX(-${284 * activeIndex.value}px)`;
+  return `translateX(calc(${70 * activeIndex.value}px - ${100 * activeIndex.value}vw))`;
 });
 
 function showSlide(index) {
@@ -143,19 +143,20 @@ onUnmounted(() => {
 .carousel-retrospect-threee {
   width: 100vw;
   overflow: hidden;
-  margin: 0 auto 0 40px;
+  margin: 0 auto auto 40px;
 
   .carousel-retrospect-container {
-    gap: 24px;
-    @apply flex items-start justify-start;
+    @apply flex;
     transform: v-bind(translateVal);
     transition: transform .4s ease-in-out;
-
+    width: calc(300vw - 180px);
     .guide-carousel-container {
-      flex-shrink: 0;
-      width: 260px;
+      width: calc(100vw - 100px);
       background: linear-gradient(#ffffff, #ffffff);
       @apply rounded-2xl p-10 px-6 box-border;
+    }
+    .guide-carousel-container +.guide-carousel-container{
+      margin-left: 30px;
     }
   }
 

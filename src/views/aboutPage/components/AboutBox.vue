@@ -5,7 +5,7 @@ import CarouselAboutThreee from "@/views/aboutPage/components/CarouselAboutThree
 <template>
   <div class="third-page">
     <div class="h-5"></div>
-    <div class="w-full flex justify-between items-center box-border">
+    <div class="w-full flex justify-between items-center box-border pr-10">
       <div class="w-8 h-5 flex flex-col gap-y-1"></div>
       <div class="h-5">
         <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
@@ -27,12 +27,10 @@ import CarouselAboutThreee from "@/views/aboutPage/components/CarouselAboutThree
 <style lang="scss" scoped>
 $guide-carousel-container-height: 580px;
 .third-page {
-  width: 100%;
   background: rgba(234, 234, 234, 1);
   height: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-  @apply relative;
+  margin: 0 auto 0 40px;
+  width: calc(100vw - 40px);
   :deep(.el-dropdown) {
     outline: none;
   }

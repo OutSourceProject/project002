@@ -6,7 +6,7 @@ let currentX;
 const activeIndex = ref(0);
 const carouselRef = ref(null);
 const translateVal = computed(() => {
-  return `translateX(-${284 * activeIndex.value}px)`;
+  return `translateX(calc(${70 * activeIndex.value}px - ${100 * activeIndex.value}vw))`;
 });
 
 function showSlide(index) {
@@ -128,22 +128,24 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 .carousel-about-threee {
-  width: 100vw;
   overflow: hidden;
-  margin: 0 auto;
+  width: 100%;
 
   .carousel-about-container {
-    gap: 24px;
-    @apply flex items-start justify-start;
     transform: v-bind(translateVal);
     transition: transform .4s ease-in-out;
-
+    width: calc(300vw - 60px);
+    @apply flex;
     .guide-carousel-container {
-      flex-shrink: 0;
-      width: 260px;
+      width: calc(100vw - 100px);
       background: linear-gradient(#ffffff, #ffffff);
-      @apply rounded-2xl p-10 px-6 box-border;
+      @apply rounded-2xl pt-10 px-6 pb-6 box-border;
     }
+
+    .guide-carousel-container + .guide-carousel-container {
+      margin-left: 30px;
+    }
+
   }
 
 }
