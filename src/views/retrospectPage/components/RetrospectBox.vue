@@ -5,6 +5,7 @@ import { getDataFromUrl } from '@/tools/about-url.js';
 import { useRetrospectRememberStore } from '@/stores/counter.js';
 import axios from 'axios';
 import CarouselTow from "@/views/retrospectPage/components/CarouselTow.vue";
+import CarouselRetrospectThreee from "@/views/retrospectPage/components/CarouselRetrospectThreee.vue";
 
 const useRetrospectRemember = useRetrospectRememberStore();
 const router = useRouter();
@@ -517,116 +518,12 @@ watch(
       </div>
     </div>
     <div class="h-20"></div>
-    <div
-        ref="guideCarouselBoxRef"
-        :class="[
-        'guide-carousel-box',
-        { 'arrow-left': guideActiveIndex === 0 },
-        { 'arrow-rigth': guideActiveIndex === 3 },
-      ]"
-    >
-      <el-carousel
-          ref="guideCarouselRef"
-          :activeIndex="guideActiveIndex"
-          :autoplay="false"
-          arrow="always"
-          indicator-position="outside"
-          @change="guideCarouselChange"
-      >
-        <el-carousel-item>
-          <div class="guide-carousel-container">
-            <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
-            </div>
-            <div class="h-2"></div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20">
-              <span>手洗</span>
-            </div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2">
-              <span>Hand Washing</span>
-            </div>
-            <div class="h-5"></div>
-            <div class="font-size-16 color-999999 mb-3 leading-5">
-              <p>用35℃温水搭配中性洗涤剂轻揉袖口、领口等易脏部位避免用力拧干可用毛巾按压吸水。</p>
-            </div>
-            <div class="font-size-16 color-595757 mb-3">
-              <p>清洁方法</p>
-            </div>
-          </div>
-        </el-carousel-item>
-        <el-carousel-item>
-          <div class="guide-carousel-container">
-            <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
-            </div>
-            <div class="h-2"></div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20">
-              <span>机洗</span>
-            </div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2">
-              <span>Machine Washable</span>
-            </div>
-            <div class="h-5"></div>
-            <div class="font-size-16 color-999999 mb-3 leading-5">
-              <p>仅限标注可机洗的款式，选择轻柔模式并使用专用洗涤剂洗后立即取出晾干。</p>
-            </div>
-            <div class="font-size-16 color-595757 mb-3">
-              <p>清洁方法</p>
-            </div>
-          </div>
-        </el-carousel-item>
-        <el-carousel-item>
-          <div class="guide-carousel-container">
-            <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
-            </div>
-            <div class="h-2"></div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20">
-              <span>局部清洁</span>
-            </div>
-            <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2">
-              <span>Localized Cleaningg</span>
-            </div>
-            <div class="h-5"></div>
-            <div class="font-size-16 color-999999 mb-3 leading-5">
-              <p>轻微污渍用羽绒服专用清洁剂擦拭，油渍先用卸妆湿巾处理再清洗。</p>
-            </div>
-            <div class="font-size-16 color-595757 mb-3">
-              <p>清洁方法</p>
-            </div>
-          </div>
-        </el-carousel-item>
-        <el-carousel-item>
-          <div class="guide-carousel-container">
-            <div class="w-full flex items-center justify-start">
-              <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
-            </div>
-            <div class="h-2"></div>
-            <div class="w-full flex items-center justify-start font-bold text-xl">
-              <span>存储要点</span>
-            </div>
-            <div class="w-full flex items-center justify-start font-bold text-xl">
-              <span>Storage Essentials</span>
-            </div>
-            <div class="h-5"></div>
-            <div class="text-sm text-gray-400 mb-3">
-              <p>
-                完全干燥后折看或悬挂存放避免压缩。使用防尘罩或通风收纳袋，南方梅雨季每月晾晒通风。
-              </p>
-            </div>
-            <div class="text-sm text-gray-400 mb-3">
-              <p></p>
-            </div>
-          </div>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
+    <CarouselRetrospectThreee/>
     <div class="h-20"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-$guide-carousel-container-height: 300px;
 $container_width: calc(100vw - 80px);
 .second-page {
   width: 100%;
@@ -650,80 +547,6 @@ $container_width: calc(100vw - 80px);
     padding-top: 40px;
     box-sizing: border-box;
   }
-
-  .guide-carousel-box {
-    position: relative;
-    padding-bottom: 40px;
-    box-sizing: border-box;
-
-    .guide-carousel-container {
-      width: $container_width;
-      height: $guide-carousel-container-height;
-      background: linear-gradient(#ffffff, #ffffff);
-      @apply rounded-2xl p-10 px-6 box-border;
-    }
-
-    :deep(.el-carousel) {
-      width: calc(100vw - 80px);
-      margin: 0 auto;
-      position: static;
-
-      .el-carousel__container {
-        height: $guide-carousel-container-height;
-      }
-
-      .el-carousel__item {
-        border-radius: 1rem;
-      }
-
-      .el-carousel__arrow {
-        display: flex !important;
-        background-color: transparent !important;
-        border: 2px solid rgba(151, 203, 230, 1);
-        color: rgba(151, 203, 230, 1);
-        font-size: 20px;
-        overflow: hidden;
-        border-radius: 18px;
-        -webkit-tap-highlight-color: transparent;
-        outline: none;
-
-        &.el-carousel__arrow--left {
-          top: calc(100% + 10px);
-          left: calc(50% - 46px);
-        }
-
-        &.el-carousel__arrow--right {
-          top: calc(100% + 10px);
-          left: calc(50% + 10px);
-        }
-      }
-
-      .el-carousel__indicators--outside {
-        display: none;
-      }
-    }
-  }
-
-  .arrow-left {
-    :deep(.el-carousel) {
-      .el-carousel__arrow {
-        &.el-carousel__arrow--left {
-          border-width: 1px;
-        }
-      }
-    }
-  }
-
-  .arrow-rigth {
-    :deep(.el-carousel) {
-      .el-carousel__arrow {
-        &.el-carousel__arrow--right {
-          border-width: 1px;
-        }
-      }
-    }
-  }
-
   .container-box {
     width: 100%;
     display: flex;
