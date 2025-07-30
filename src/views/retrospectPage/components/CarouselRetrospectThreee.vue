@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
+import ArrowsButton from "@/components/ArrowsButton.vue";
 
 let startX;
 let currentX;
@@ -54,6 +55,16 @@ const handleTouchEnd = (e) => {
   }
   startX = 0;
   currentX = 0;
+};
+const leftHandle = () => {
+  if ([1, 2].includes(activeIndex.value)) {
+    prevSlide();
+  }
+};
+const rightHandle = () => {
+  if ([0, 1].includes(activeIndex.value)) {
+    nextSlide();
+  }
 };
 onMounted(() => {
   nextTick(() => {
@@ -136,6 +147,10 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+    <div class="h-5"></div>
+    <div class="flex justify-end button-box">
+      <ArrowsButton :active-index="activeIndex" :total="2" @left="leftHandle" @right="rightHandle"/>
+    </div>
   </div>
 </template>
 
@@ -150,14 +165,20 @@ onUnmounted(() => {
     transform: v-bind(translateVal);
     transition: transform .4s ease-in-out;
     width: calc(300vw - 180px);
+
     .guide-carousel-container {
       width: calc(100vw - 100px);
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 1),rgba(255, 255, 255, 0.5));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
       @apply rounded-2xl p-10 px-6 box-border;
     }
-    .guide-carousel-container +.guide-carousel-container{
+
+    .guide-carousel-container + .guide-carousel-container {
       margin-left: 30px;
     }
+  }
+
+  .button-box {
+    width: calc(100vw - 110px);
   }
 
 }

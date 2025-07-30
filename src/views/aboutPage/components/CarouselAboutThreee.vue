@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, onUnmounted } from "vue";
+import ArrowsButton from "@/components/ArrowsButton.vue";
 
 let startX;
 let currentX;
@@ -54,6 +55,16 @@ const handleTouchEnd = (e) => {
   }
   startX = 0;
   currentX = 0;
+};
+const leftHandle = () => {
+  if ([1, 2].includes(activeIndex.value)) {
+    prevSlide();
+  }
+};
+const rightHandle = () => {
+  if ([0, 1].includes(activeIndex.value)) {
+    nextSlide();
+  }
 };
 onMounted(() => {
   nextTick(() => {
@@ -123,6 +134,10 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+    <div class="h-5"></div>
+    <div class="flex justify-end button-box">
+      <ArrowsButton :active-index="activeIndex" :total="2" @left="leftHandle" @right="rightHandle"/>
+    </div>
   </div>
 </template>
 
@@ -146,6 +161,10 @@ onUnmounted(() => {
       margin-left: 30px;
     }
 
+  }
+
+  .button-box {
+    width: calc(100vw - 110px);
   }
 
 }
