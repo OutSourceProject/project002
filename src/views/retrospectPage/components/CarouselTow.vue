@@ -144,7 +144,7 @@ onUnmounted(() => {
     overflow: hidden;
     height: 320px;
     width: calc(100vw - 80px);
-    background: linear-gradient(to bottom, rgba(234, 234, 234, 0.3), rgba(255, 255, 255, 0.88));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 30%, rgba(255, 255, 255, 1) 100%);
     @apply rounded-2xl flex items-center justify-center;
     .carousel {
       position: relative;

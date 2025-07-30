@@ -180,13 +180,13 @@ watch(
     <div class="h-5"></div>
     <div class="container-box relative z-1">
       <div
-          class="container-width bg-white rounded-2xl flex items-center justify-between p-10 box-border"
+          class="container-width logo-container"
       >
         <div class="w-1/3 flex items-center justify-center">
           <img :src="logo" alt="" class="w-full"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
-          <span class="text-gray-600 opacity-80">x</span>
+          <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png">
         </div>
         <div class="w-1/3 flex items-center justify-center">
           <img alt="" class="w-full" src="@/assets/images/snowflake-text002.png"/>
@@ -209,7 +209,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span>
+          <span class="color-999999 font-size-16">绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent
+            }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span>
         </div>
         <div class="h-1"></div>
@@ -220,7 +221,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span>
+          <span class="color-999999 font-size-16">蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness
+            }}cm</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span>
         </div>
         <div class="h-1"></div>
@@ -231,7 +233,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness }}mm</span></span>
+          <span class="color-999999 font-size-16">清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness
+            }}mm</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.cleanlinessRef }}mm</span>
         </div>
         <div class="h-1"></div>
@@ -245,7 +248,8 @@ watch(
           <span class="color-999999 font-size-16">绒丝+羽丝含量<span
               class="ml-5"
           >{{ experimentalDetectionData.downFeatherContent }}%</span></span>
-          <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.downFeatherContentRef }}%</span>
+          <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.downFeatherContentRef
+            }}%</span>
         </div>
         <div class="h-1"></div>
         <div class="w-full h-[6px] rounded-[6px] bg-04"></div>
@@ -255,7 +259,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">陆禽毛<span class="ml-5">{{ experimentalDetectionData.landFowlFeather }}%</span></span>
+          <span class="color-999999 font-size-16">陆禽毛<span class="ml-5">{{ experimentalDetectionData.landFowlFeather
+            }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.landFowlFeatherRef }}%</span>
         </div>
         <div class="h-1"></div>
@@ -266,7 +271,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span>
+          <span class="color-999999 font-size-16">残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent
+            }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≥{{ experimentalDetectionData.fatContentRef }}%</span>
         </div>
         <div class="h-1"></div>
@@ -277,7 +283,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span>
+          <span class="color-999999 font-size-16">杂质<span class="ml-5">{{ experimentalDetectionData.impurities
+            }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span>
         </div>
         <div class="h-1"></div>
@@ -288,7 +295,8 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
-          <span class="color-999999 font-size-16">异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span>
+          <span class="color-999999 font-size-16">异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown
+            }}%</span></span>
           <span class="color-999999 font-size-16">标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span>
         </div>
         <div class="h-1"></div>
@@ -453,13 +461,20 @@ $container_width: calc(100vw - 80px);
     padding-top: 40px;
     box-sizing: border-box;
   }
+
   .container-box {
     width: 100%;
     display: flex;
     justify-content: center;
 
+    .logo-container {
+      @apply rounded-2xl flex items-center justify-between p-10 box-border;
+      background: radial-gradient(circle,rgba(0, 0, 0, 0.08) 5%,rgba(255, 255, 255, 0.5) 100%);
+    }
+
     .container-width {
       width: $container_width;
+
       .bg-01 {
         background: linear-gradient(
                 to right,

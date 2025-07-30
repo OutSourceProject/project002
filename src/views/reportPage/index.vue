@@ -136,7 +136,7 @@ $container_width: calc(100vw - 80px);
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: rgba(234, 234, 234, 1);
+  background:linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 1) 100%);
 
   .carousel-box {
     position: relative;
@@ -165,8 +165,8 @@ $container_width: calc(100vw - 80px);
       .el-carousel__arrow {
         display: flex !important;
         background-color: transparent !important;
-        border: 2px solid rgba(151, 203, 230, 1);
-        color: rgba(151, 203, 230, 1);
+        border: 2px solid #999999;
+        color: #999999;
         font-size: 20px;
         overflow: hidden;
         border-radius: 18px;
@@ -174,12 +174,12 @@ $container_width: calc(100vw - 80px);
         outline: none;
 
         &.el-carousel__arrow--left {
-          top: calc(100% + 10px);
+          top: calc(100% - 40px);
           left: calc(50% - 46px);
         }
 
         &.el-carousel__arrow--right {
-          top: calc(100% + 10px);
+          top: calc(100% - 40px);
           left: calc(50% + 10px);
         }
       }

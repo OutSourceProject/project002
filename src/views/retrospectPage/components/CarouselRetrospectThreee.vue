@@ -152,7 +152,7 @@ onUnmounted(() => {
     width: calc(300vw - 180px);
     .guide-carousel-container {
       width: calc(100vw - 100px);
-      background: linear-gradient(#ffffff, #ffffff);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1),rgba(255, 255, 255, 0.5));
       @apply rounded-2xl p-10 px-6 box-border;
     }
     .guide-carousel-container +.guide-carousel-container{

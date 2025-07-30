@@ -93,7 +93,7 @@ onUnmounted(() => {
             <el-carousel-item>
               <div class="carousel-container">
                 <div class="w-full flex items-center justify-center">
-                  <img alt="" class="w-full" src="@/assets/images/license002.jpg"/>
+                  <img alt="" class="w-full" src="@/assets/images/license002.png"/>
                 </div>
               </div>
             </el-carousel-item>
@@ -142,8 +142,8 @@ $container_width: calc(100vw - 80px);
       .el-carousel__arrow {
         display: flex !important;
         background-color: transparent !important;
-        border: 2px solid rgba(151, 203, 230, 1);
-        color: rgba(151, 203, 230, 1);
+        border: 2px solid #999999;
+        color: #999999;
         font-size: 20px;
         overflow: hidden;
         border-radius: 18px;
@@ -151,12 +151,12 @@ $container_width: calc(100vw - 80px);
         outline: none;
 
         &.el-carousel__arrow--left {
-          top: calc(100% + 10px);
+          top: calc(100% - 40px);
           left: calc(50% - 46px);
         }
 
         &.el-carousel__arrow--right {
-          top: calc(100% + 10px);
+          top: calc(100% - 40px);
           left: calc(50% + 10px);
         }
       }
