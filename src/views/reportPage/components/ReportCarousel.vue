@@ -98,6 +98,7 @@ onUnmounted(() => {
         <ArrowsButton
           :active-index="currentIndex"
           :total="totalItems - 1"
+          color="#999999"
           @left="leftHandle"
           @right="rightHandle"
         />

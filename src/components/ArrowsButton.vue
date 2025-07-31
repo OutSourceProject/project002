@@ -1,5 +1,6 @@
 <script setup>
-const porps = defineProps({
+import {computed} from 'vue'
+const props = defineProps({
   activeIndex: {
     type: Number,
     required: true
@@ -12,9 +13,10 @@ const porps = defineProps({
     type: String,
     required: false,
     default: '#97cbe6'
-  }
+  },
 });
 const emits = defineEmits(['left', 'right']);
+const buttonColor = computed(() => props.color);
 const leftClick = () => {
   emits('left');
 };
@@ -67,7 +69,7 @@ $sve_size: 18px;
 
   .left-arrow {
     outline: none;
-    border-color: #97cbe6;
+    border-color: v-bind(buttonColor);
     @apply w-10 h-10 rounded-3xl flex items-center justify-center border-solid border rotate-180 box-border;
     &.is-active {
       border-width: 2px;
@@ -78,19 +80,19 @@ $sve_size: 18px;
       outline: none;
       width: $sve_size;
       height: $sve_size;
-      fill: #97cbe6;
+      fill: v-bind(buttonColor);
     }
   }
 
   .right-arrow {
-    border-color: #97cbe6;
+    border-color: v-bind(buttonColor);
     outline: none;
     @apply w-10 h-10 rounded-3xl flex items-center justify-center border-solid border rotate-0 box-border;
     svg {
       outline: none;
       width: $sve_size;
       height: $sve_size;
-      fill: #97cbe6;
+      fill: v-bind(buttonColor);
     }
 
     &.is-active {
