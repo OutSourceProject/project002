@@ -16,7 +16,7 @@ const popperStyle = {
 const yrcode = ref('');
 const batchNumInfo = ref('');
 const logo = ref('');
-const executiveStandard = ref('')
+const executiveStandard = ref('');
 const experimentalDetectionData = ref({
   downContent: '87.2',
   downContentRef: '85',
@@ -66,12 +66,12 @@ onMounted(() => {
 
 const getBatchInfo = async () => {
   try {
-    const params = new URLSearchParams({ yrcode: yrcode.value })
-    const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`)
-    console.log(response.data.data.data.batchNum)
-    batchNumInfo.value = response.data.data.data.batchNum
-    executiveStandard.value = response.data.data.data.executiveStandard
-    console.log(batchNumInfo.value)
+    const params = new URLSearchParams({yrcode: yrcode.value});
+    const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`);
+    console.log(response.data.data.data.batchNum);
+    batchNumInfo.value = response.data.data.data.batchNum;
+    executiveStandard.value = response.data.data.data.executiveStandard;
+    console.log(batchNumInfo.value);
   } catch (error) {
     console.error('Error fetching batch info:', error);
     throw error;
@@ -303,14 +303,13 @@ watch(
         <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
       </div>
     </div>
-    <div class="h-10"></div>
-    <div class="h-6"></div>
+    <div class="h-32"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
         <img alt="" class="w-full" src="@/assets/images/border001.png"/>
       </div>
     </div>
-    <div class="h-32"></div>
+    <div class="h-6"></div>
     <div class="container-box relative z-1">
       <div class="h-6"></div>
       <div class="container-width flex items-center justify-center gap-5">
@@ -334,14 +333,13 @@ watch(
         </div>
       </div>
     </div>
-    <div class="h-32"></div>
+    <div class="h-6"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
         <img alt="" class="w-full" src="@/assets/images/border001.png"/>
       </div>
     </div>
-    <div class="h-10"></div>
-    <div class="h-6"></div>
+    <div class="h-32"></div>
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <span class="font-medium font-size-24 color-595757">羽绒认证</span>
@@ -420,20 +418,22 @@ watch(
         </div>
       </div>
     </div>
-    <div class="h-20"></div>
-    <div class="container-box relative z-1">
-      <div class="container-width flex items-center justify-start">
-        <span class="font-medium font-size-24 color-595757">羽绒服养护指南</span>
+    <div style="min-height: 100vh">
+      <div class="h-20"></div>
+      <div class="container-box relative z-1">
+        <div class="container-width flex items-center justify-start">
+          <span class="font-medium font-size-24 color-595757">羽绒服养护指南</span>
+        </div>
       </div>
-    </div>
-    <div class="container-box relative z-1">
-      <div class="container-width flex items-center justify-start">
-        <span class="font-size-20 font-light color-999999 mt-2">DOWN JACKET CARE GUIDE</span>
+      <div class="container-box relative z-1">
+        <div class="container-width flex items-center justify-start">
+          <span class="font-size-20 font-light color-999999 mt-2">DOWN JACKET CARE GUIDE</span>
+        </div>
       </div>
+      <div class="h-20"></div>
+      <CarouselRetrospectThreee/>
+      <div class="h-20"></div>
     </div>
-    <div class="h-20"></div>
-    <CarouselRetrospectThreee/>
-    <div class="h-20"></div>
   </div>
 </template>
 

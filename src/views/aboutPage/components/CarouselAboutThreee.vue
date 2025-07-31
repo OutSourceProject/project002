@@ -124,7 +124,7 @@ onUnmounted(() => {
             羽丰羽绒品牌焕新升级，重磅推出“溯羽系统”。该系统由【中国羽绒工业协会】会员企业羽丰羽绒有限公司研发运营，是
             <span class="color-595757 font-bold">【可追溯羽绒信息平台】</span>
             ，并已加入由中国羽绒工业协会主导的
-            <span class="text-gray-900 font-bold">【全球羽绒追溯系统】。</span>
+            <span class="color-595757 font-bold">【全球羽绒追溯系统】。</span>
           </p>
           <div class="h-4"></div>
           <p class="font-size-16 color-999999 leading-5 break-all">

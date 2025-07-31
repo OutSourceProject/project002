@@ -19,7 +19,7 @@ import CarouselAboutThreee from "@/views/aboutPage/components/CarouselAboutThree
     <div class="w-full box-border flex items-center justify-start">
       <span class="font-size-24 color-999999">ABOUT US</span>
     </div>
-    <div class="h-5"></div>
+    <div class="h-12"></div>
     <CarouselAboutThreee/>
     <div class="h-20"></div>
   </div>
