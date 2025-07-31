@@ -393,7 +393,7 @@ watch(
         </div>
         <div class="w-3/4">
           <p class="font-size-16 color-999999 leading-6">
-            <span class="font-semibold color-595757 mr-1">责任羽绒标准（RDS））</span>
+            <span class="font-semibold color-595757 mr-1">责任羽绒标准（RDS）</span>
             是一项国际自愿性标准，针对鸭鹅供应链以及羽绒和羽毛原料从经认证的养殖场到最终产品的产业链进行监督管理，处理其中的动物福利问题。各场所由独立的第三方认证机构通过每年审核进行认证。确保提供羽绒和羽毛的供应链中的动物
             <span class="font-semibold color-595757 mr-1">
               没有遭受任何不必要的伤害，不存在活拔，强行喂食等虐待行为。

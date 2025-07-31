@@ -4,6 +4,7 @@ import { Close } from "@element-plus/icons-vue";
 import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import axios from "axios";
 import { getDataFromUrl } from '@/tools/about-url.js';
+import ReportCarousel from "@/views/reportPage/components/ReportCarousel.vue";
 
 let startX;
 let currentX;
@@ -94,34 +95,7 @@ onUnmounted(() => {
           </el-icon>
         </div>
       </div>
-      <div class="w-full">
-        <div
-            ref="carouselBoxRef"
-            :class="['carousel-box',{'arrow-left':activeIndex=== 0},{'arrow-rigth':activeIndex=== imageData.length -1}]"
-        >
-          <el-carousel
-              ref="carouselRef"
-              :activeIndex="activeIndex"
-              :autoplay="false"
-              arrow="always"
-              indicator-position="outside"
-              @change="carouselChange"
-          >
-            <el-carousel-item v-for="(image,i) in imageData" :key="`iamge_${i}_${image.id}`">
-              <div class="carousel-container">
-                <div>
-                  <div class="w-full flex items-center justify-center">
-                    <img :src="image" alt="" class="w-full"/>
-                  </div>
-                  <div v-if="i===0" class="w-full flex items-center justify-center mt-5">
-                    <span class="color-999999 font-size-16">(本报告仅限本批次羽绒原始状态)</span>
-                  </div>
-                </div>
-              </div>
-            </el-carousel-item>
-          </el-carousel>
-        </div>
-      </div>
+      <ReportCarousel :image-list="imageData"/>
       <div class="w-full h-10">
       </div>
     </div>
@@ -140,78 +114,6 @@ $container_width: calc(100vw - 80px);
   &::-webkit-scrollbar {
     width: 0;
     display: none;
-  }
-
-  .carousel-box {
-    position: relative;
-    padding-bottom: 40px;
-    box-sizing: border-box;
-
-    .carousel-container {
-      width: $container_width;
-      height: $carousel-container-height;
-      @apply flex items-center justify-center;
-    }
-
-    :deep(.el-carousel) {
-      width: calc(100vw - 80px);
-      margin: 0 auto;
-      position: static;
-
-      .el-carousel__container {
-        height: $carousel-container-height;
-      }
-
-      .el-carousel__item {
-        border-radius: 1rem;
-      }
-
-      .el-carousel__arrow {
-        display: flex !important;
-        background-color: transparent !important;
-        border: 2px solid #999999;
-        color: #999999;
-        font-size: 20px;
-        overflow: hidden;
-        border-radius: 18px;
-        -webkit-tap-highlight-color: transparent;
-        outline: none;
-
-        &.el-carousel__arrow--left {
-          top: calc(100% - 40px);
-          left: calc(50% - 46px);
-        }
-
-        &.el-carousel__arrow--right {
-          top: calc(100% - 40px);
-          left: calc(50% + 10px);
-        }
-      }
-
-      .el-carousel__indicators--outside {
-        display: none;
-      }
-    }
-  }
-
-  .arrow-left {
-    :deep(.el-carousel) {
-      .el-carousel__arrow {
-        &.el-carousel__arrow--left {
-          border-width: 1px;
-        }
-      }
-    }
-  }
-
-  .arrow-rigth {
-    :deep(.el-carousel) {
-      .el-carousel__arrow {
-        &.el-carousel__arrow--right {
-          border-width: 1px;
-        }
-      }
-    }
   }
 }
 </style>
