@@ -173,7 +173,7 @@ onUnmounted(() => {
         text-align: center;
 
         .text-box {
-          transform: translateY(30px);
+          transform: translateX(100px);
           opacity: 0;
           transition: all 0.6s ease 0.45s;
         }
