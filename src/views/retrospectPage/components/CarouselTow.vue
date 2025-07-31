@@ -6,6 +6,11 @@ const props = defineProps({
     type: [String, Number],
     required: false,
     default: ''
+  },
+  executiveStandard: {
+    type: [String, Number],
+    required: false,
+    default: ''
   }
 });
 let items;
@@ -96,7 +101,7 @@ onUnmounted(() => {
             <p class="w-full text-center font-bold color-595757 font-size-20 mb-3">樱桃谷鸭</p>
             <p class="w-full text-center color-999999 font-size-16 leading-relaxed">批次号：{{ batchNumInfo }}</p>
             <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">原产地：中国山东</p>
-            <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">执行标准：GB/T 14272-2021</p>
+            <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">执行标准：{{executiveStandard}}</p>
             <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">生产商：羽丰羽绒有限公司</p>
           </div>
         </div>
