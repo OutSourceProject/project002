@@ -6,6 +6,7 @@ import { useRetrospectRememberStore } from '@/stores/counter.js';
 import axios from 'axios';
 import CarouselTow from "@/views/retrospectPage/components/CarouselTow.vue";
 import CarouselRetrospectThreee from "@/views/retrospectPage/components/CarouselRetrospectThreee.vue";
+import CarouselOneVersion from "@/views/retrospectPage/components/CarouselOneVersion.vue";
 
 const useRetrospectRemember = useRetrospectRememberStore();
 const router = useRouter();
@@ -174,7 +175,7 @@ watch(
       </div>
     </div>
     <div ref="carouselBoxRef" class="carousel-box">
-      <CarouselTow :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard"/>
+      <CarouselOneVersion :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard"/>
     </div>
     <div class="h-20"></div>
     <div class="h-5"></div>
