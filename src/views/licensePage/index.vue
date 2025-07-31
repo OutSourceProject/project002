@@ -115,6 +115,10 @@ $container_width: calc(100vw - 80px);
   overflow-x: hidden;
   overflow-y: auto;
   background: rgba(234, 234, 234, 1);
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
   .carousel-box {
     position: relative;
     padding-bottom: 40px;

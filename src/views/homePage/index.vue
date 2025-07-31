@@ -15,5 +15,9 @@ import HomeBox from "@/views/homePage/components/HomeBox.vue";
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 }
 </style>

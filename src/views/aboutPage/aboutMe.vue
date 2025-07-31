@@ -16,5 +16,9 @@ import AboutBox from "@/views/aboutPage/components/AboutBox.vue";
   overflow-x: hidden;
   overflow-y: auto;
   background: rgba(234, 234, 234, 1);
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 }
 </style>

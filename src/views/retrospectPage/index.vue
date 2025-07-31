@@ -14,5 +14,9 @@ import RetrospectBox from "@/views/retrospectPage/components/RetrospectBox.vue";
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 }
 </style>
