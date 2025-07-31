@@ -92,10 +92,10 @@ onUnmounted(() => {
           <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
         </div>
         <div class="h-2"></div>
-        <div class="w-full flex items-center justify-start font-bold font-size-20">
+        <div class="w-full flex items-center justify-start font-bold font-size-20 color-595757">
           <span>机洗</span>
         </div>
-        <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2">
+        <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2 color-595757">
           <span>Machine Washable</span>
         </div>
         <div class="h-5"></div>
@@ -111,10 +111,10 @@ onUnmounted(() => {
           <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
         </div>
         <div class="h-2"></div>
-        <div class="w-full flex items-center justify-start font-bold font-size-20">
+        <div class="w-full flex items-center justify-start font-bold font-size-20 color-595757">
           <span>局部清洁</span>
         </div>
-        <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2">
+        <div class="w-full flex items-center justify-start font-bold font-size-20 mt-2 color-595757">
           <span>Localized Cleaningg</span>
         </div>
         <div class="h-5"></div>
@@ -130,10 +130,10 @@ onUnmounted(() => {
           <img alt="" class="w-16" src="@/assets/images/icon001.png"/>
         </div>
         <div class="h-2"></div>
-        <div class="w-full flex items-center justify-start font-bold text-xl">
+        <div class="w-full flex items-center justify-start font-bold text-xl color-595757">
           <span>存储要点</span>
         </div>
-        <div class="w-full flex items-center justify-start font-bold text-xl">
+        <div class="w-full flex items-center justify-start font-bold text-xl color-595757">
           <span>Storage Essentials</span>
         </div>
         <div class="h-5"></div>
@@ -147,10 +147,13 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-    <div class="h-5"></div>
+    <div class="h-20"></div>
+    <div class="h-1"></div>
     <div class="flex justify-end button-box">
       <ArrowsButton :active-index="activeIndex" :total="2" @left="leftHandle" @right="rightHandle"/>
     </div>
+    <div class="h-10"></div>
+    <div class="h-8"></div>
   </div>
 </template>
 
