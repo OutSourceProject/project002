@@ -1,5 +1,5 @@
 <script setup>
-import { ref,onMounted,watch } from 'vue';
+import { ref,onMounted } from 'vue';
 import { useRouter } from "vue-router";
 import { getDataFromUrl } from "@/tools/about-url.js";
 import { useRetrospectRememberStore } from "@/stores/counter.js";
