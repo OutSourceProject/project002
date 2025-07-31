@@ -90,6 +90,9 @@ onUnmounted(() => {
               <div class="w-full flex items-center justify-center">
                 <img :src="image" alt="" class="w-full"/>
               </div>
+              <div v-if="i===0" class="w-full flex items-center justify-center mt-5">
+                <span class="color-999999 font-size-16">(本报告仅限本批次羽绒原始状态)</span>
+              </div>
             </div>
           </div>
         </div>

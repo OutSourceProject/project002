@@ -1,64 +1,10 @@
 <script setup>
 
 import { Close } from "@element-plus/icons-vue";
-import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import LicenseCarousel from "@/views/licensePage/components/LicenseCarousel.vue";
-
-let startX;
-let currentX;
-const activeIndex = ref(0);
-const carouselBoxRef = ref(null);
-const carouselRef = ref(null);
 const goBack = () =>{
   window.history.back();
 }
-const carouselChange = (current) => {
-  activeIndex.value = current;
-};
-const handleTouchStart = (e) => {
-  startX = e.touches[0].clientX;
-  currentX = startX;
-};
-const handleTouchMove = (e) => {
-  if (!startX) {
-    return;
-  }
-  currentX = e.touches[0].clientX;
-};
-const handleTouchEnd = (e) => {
-  if (!startX) {
-    return;
-  }
-
-  const diff = startX - currentX;
-  if (!diff) {
-    return;
-  }
-  const threshold = 10;
-  if (diff > threshold) {
-    carouselRef.value.next();
-  } else if (diff < -threshold) {
-    carouselRef.value.prev();
-  }
-  startX = 0;
-  currentX = 0;
-};
-onMounted(() => {
-  nextTick(() => {
-    if (carouselBoxRef.value) {
-      carouselBoxRef.value.addEventListener('touchstart', handleTouchStart);
-      carouselBoxRef.value.addEventListener('touchmove', handleTouchMove);
-      carouselBoxRef.value.addEventListener('touchend', handleTouchEnd);
-    }
-  });
-});
-onUnmounted(() => {
-  if (carouselBoxRef.value) {
-    carouselBoxRef.value.removeEventListener('touchstart', handleTouchStart);
-    carouselBoxRef.value.removeEventListener('touchmove', handleTouchMove);
-    carouselBoxRef.value.removeEventListener('touchend', handleTouchEnd);
-  }
-});
 </script>
 
 <template>

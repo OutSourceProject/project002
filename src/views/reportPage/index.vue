@@ -1,51 +1,15 @@
 <script setup>
 
 import { Close } from "@element-plus/icons-vue";
-import { nextTick, onMounted, onUnmounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import axios from "axios";
 import { getDataFromUrl } from '@/tools/about-url.js';
 import ReportCarousel from "@/views/reportPage/components/ReportCarousel.vue";
 
-let startX;
-let currentX;
-const activeIndex = ref(0);
-const carouselBoxRef = ref(null);
-const carouselRef = ref(null);
 const imageData = ref([]);
 const yrcode = ref('');
 const goBack = () => {
   window.history.back();
-};
-const carouselChange = (current) => {
-  activeIndex.value = current;
-};
-const handleTouchStart = (e) => {
-  startX = e.touches[0].clientX;
-  currentX = startX;
-};
-const handleTouchMove = (e) => {
-  if (!startX) {
-    return;
-  }
-  currentX = e.touches[0].clientX;
-};
-const handleTouchEnd = (e) => {
-  if (!startX) {
-    return;
-  }
-
-  const diff = startX - currentX;
-  if (!diff) {
-    return;
-  }
-  const threshold = 10;
-  if (diff > threshold) {
-    carouselRef.value.next();
-  } else if (diff < -threshold) {
-    carouselRef.value.prev();
-  }
-  startX = 0;
-  currentX = 0;
 };
 /**
  * 这里调用接口，获取图片
@@ -68,21 +32,8 @@ onMounted(() => {
   yrcode.value = urlQuery?.yrcode || localStorage.getItem("yrcode");
   console.log(localStorage.getItem("yrcode"));
   getImageList();
-  nextTick(() => {
-    if (carouselBoxRef.value) {
-      carouselBoxRef.value.addEventListener('touchstart', handleTouchStart);
-      carouselBoxRef.value.addEventListener('touchmove', handleTouchMove);
-      carouselBoxRef.value.addEventListener('touchend', handleTouchEnd);
-    }
-  });
 });
-onUnmounted(() => {
-  if (carouselBoxRef.value) {
-    carouselBoxRef.value.removeEventListener('touchstart', handleTouchStart);
-    carouselBoxRef.value.removeEventListener('touchmove', handleTouchMove);
-    carouselBoxRef.value.removeEventListener('touchend', handleTouchEnd);
-  }
-});
+
 </script>
 
 <template>
@@ -110,7 +61,8 @@ $container_width: calc(100vw - 80px);
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background:linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 1) 100%);
+
   &::-webkit-scrollbar {
     width: 0;
     display: none;
