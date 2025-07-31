@@ -35,7 +35,7 @@ onMounted(() => {
     </div>
     <div class="h-4"></div>
     <div class="w-full flex items-center justify-center ">
-      <el-input v-model="yrcode" placeholder="请输入"  class="w-64 font-size-20"/>
+      <el-input v-model="yrcode" placeholder="请输入"  class="w-64 font-size-20" readonly/>
     </div>
     <div class="h-12"></div>
     <div class="h-8"></div>
