@@ -84,7 +84,7 @@ onUnmounted(() => {
           <div class="carousel-item">
             <div class="item-content">
               <div class="w-full flex items-center justify-center">
-                <img alt="" class="w-full" src="@/assets/images/license001.jpg"/>
+                <img alt="" class="w-60" src="@/assets/images/license001.jpg"/>
               </div>
             </div>
           </div>

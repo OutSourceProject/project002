@@ -27,9 +27,9 @@ onMounted(() => {
     </div>
     <div class="h-36"></div>
     <div class="w-full flex items-center justify-center">
-      <span class="font-bold font-size-24 color-595757">每一克的温暖·皆可溯源</span>
+      <span class="font-normal font-size-24 color-595757">每一克的温暖·皆可溯源</span>
     </div>
-    <div class="h-1"></div>
+    <div class="h-4"></div>
     <div class="w-full flex items-center justify-center">
       <span class="color-999999 font-size-20 font-light">查看羽绒来源与检验检测报告</span>
     </div>
@@ -99,6 +99,7 @@ onMounted(() => {
     .el-input__inner{
       text-align: center;
       letter-spacing: 2px;
+      font-size: 20px;
     }
   }
 }

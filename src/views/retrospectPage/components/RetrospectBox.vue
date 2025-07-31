@@ -310,7 +310,7 @@ watch(
         <img alt="" class="w-full" src="@/assets/images/border001.png"/>
       </div>
     </div>
-    <div class="h-6"></div>
+    <div class="h-32"></div>
     <div class="container-box relative z-1">
       <div class="h-6"></div>
       <div class="container-width flex items-center justify-center gap-5">
@@ -334,7 +334,7 @@ watch(
         </div>
       </div>
     </div>
-    <div class="h-6"></div>
+    <div class="h-32"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
         <img alt="" class="w-full" src="@/assets/images/border001.png"/>
@@ -469,7 +469,7 @@ $container_width: calc(100vw - 80px);
 
     .logo-container {
       @apply rounded-2xl flex items-center justify-between p-10 box-border;
-      background: radial-gradient(circle,rgba(0, 0, 0, 0.08) 5%,rgba(255, 255, 255, 0.5) 100%);
+      background: radial-gradient(circle, rgba(205, 205, 205, 0.1) 5%, rgba(255, 255, 255, 0.8) 100%);
     }
 
     .container-width {

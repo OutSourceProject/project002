@@ -7,7 +7,7 @@ let currentX;
 const activeIndex = ref(0);
 const carouselRef = ref(null);
 const translateVal = computed(() => {
-  return `translateX(calc(${70 * activeIndex.value}px - ${100 * activeIndex.value}vw))`;
+  return `translateX(-${310 * activeIndex.value}px)`;
 });
 
 function showSlide(index) {
@@ -164,21 +164,21 @@ onUnmounted(() => {
     @apply flex;
     transform: v-bind(translateVal);
     transition: transform .4s ease-in-out;
-    width: calc(300vw - 180px);
+    width: 870px;
 
     .guide-carousel-container {
-      width: calc(100vw - 100px);
+      width: 250px;
       background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
       @apply rounded-2xl p-10 px-6 box-border;
     }
 
     .guide-carousel-container + .guide-carousel-container {
-      margin-left: 30px;
+      margin-left: 60px;
     }
   }
 
   .button-box {
-    width: calc(100vw - 110px);
+    width: 250px;
   }
 
 }
