@@ -3,7 +3,7 @@ import { ref,onBeforeMount } from 'vue';
 import { useRouter } from "vue-router";
 import { getDataFromUrl } from "@/tools/about-url.js";
 import { useRetrospectRememberStore } from "@/stores/counter.js";
-import axios from 'axios';
+//import axios from 'axios';
 const useRetrospectRemember = useRetrospectRememberStore()
 const router = useRouter();
 const yrcode = ref('');
@@ -19,10 +19,10 @@ onBeforeMount(() => {
   const urlQuery = getDataFromUrl();
   yrcode.value = urlQuery?.yrcode || ''
   localStorage.setItem("yrcode",yrcode.value)
-  getDomainInfo()
+  //getDomainInfo()
 })
 
-const getDomainInfo = async () => {
+/*const getDomainInfo = async () => {
   try {
     const params = new URLSearchParams({ yrcode: yrcode.value });
     const response = await axios.get(`api/domainRedirect/getDomainRedirectPublic?${params}`);
@@ -45,7 +45,7 @@ const getDomainInfo = async () => {
     console.error('Error fetching domain info:', error);
     throw error;
   }
-};
+};*/
 
 </script>
 
