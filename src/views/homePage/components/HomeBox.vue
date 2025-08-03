@@ -1,8 +1,9 @@
 <script setup>
-import { ref,onMounted } from 'vue';
+import { ref,onBeforeMount } from 'vue';
 import { useRouter } from "vue-router";
 import { getDataFromUrl } from "@/tools/about-url.js";
 import { useRetrospectRememberStore } from "@/stores/counter.js";
+import axios from 'axios';
 const useRetrospectRemember = useRetrospectRememberStore()
 const router = useRouter();
 const yrcode = ref('');
@@ -13,11 +14,39 @@ const goRetrospect = () => {
     query: {yrcode: yrcode.value}
   });
 };
-onMounted(() => {
+
+onBeforeMount(() => {
   const urlQuery = getDataFromUrl();
   yrcode.value = urlQuery?.yrcode || ''
   localStorage.setItem("yrcode",yrcode.value)
+  getDomainInfo()
 })
+
+const getDomainInfo = async () => {
+  try {
+    const params = new URLSearchParams({ yrcode: yrcode.value });
+    const response = await axios.get(`api/domainRedirect/getDomainRedirectPublic?${params}`);
+
+    // 提取 domain，并移除可能的 http:// 或 https:// 前缀
+    let domain = response.data.data.data.domain;
+
+    // 移除 http:// 或 https:// 前缀（如果存在）
+    domain = domain.replace(/^https?:\/\//i, '');
+
+    // 确保 domain 不带路径（如 baidu.com/xxx → baidu.com）
+    domain = domain.split('/')[0];
+
+    // 拼接成完整的 URL（默认用 https）
+    const targetUrl = `https://${domain}?yrcode=${yrcode.value}`;
+
+    console.log('Redirecting to:', targetUrl);
+    window.location.href = targetUrl;
+  } catch (error) {
+    console.error('Error fetching domain info:', error);
+    throw error;
+  }
+};
+
 </script>
 
 <template>

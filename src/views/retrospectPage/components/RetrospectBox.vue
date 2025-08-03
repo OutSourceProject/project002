@@ -16,6 +16,7 @@ const popperStyle = {
 };
 const yrcode = ref('');
 const batchNumInfo = ref('');
+const gbTb = ref(1)
 const logo = ref('');
 const executiveStandard = ref('');
 const experimentalDetectionData = ref({
@@ -69,8 +70,9 @@ const getBatchInfo = async () => {
   try {
     const params = new URLSearchParams({yrcode: yrcode.value});
     const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`);
-    console.log(response.data.data.data.batchNum);
+    console.log(response.data.data.data);
     batchNumInfo.value = response.data.data.data.batchNum;
+    gbTb.value = response.data.data.data.gbTb;
     executiveStandard.value = response.data.data.data.executiveStandard;
     console.log(batchNumInfo.value);
   } catch (error) {
@@ -242,8 +244,8 @@ watch(
         <div class="w-full h-[6px] rounded-[6px] bg-03"></div>
       </div>
     </div>
-    <div class="h-14"></div>
-    <div class="container-box relative z-1">
+    <div class="h-14" v-if="gbTb==1"></div>
+    <div class="container-box relative z-1" v-if="gbTb==1">
       <div class="container-width">
         <div class="w-full flex items-center justify-between">
           <span class="color-999999 font-size-16">绒丝+羽丝含量<span

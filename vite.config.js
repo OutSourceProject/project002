@@ -60,7 +60,7 @@ export default defineConfig(({ mode }) => {
       //host: '0.0.0.0',
       //proxy: {
         //'/api': {
-         // target: 'https://admin.yufengyurong.com/',
+          //target: 'http://127.0.0.1:8888',
           //changeOrigin: true,
         //},
       //},
