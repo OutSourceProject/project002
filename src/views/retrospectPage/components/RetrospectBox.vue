@@ -486,7 +486,7 @@ watch(
             ></span
             >
             <span class="color-999999 font-size-16"
-            >标准参考值:≥{{ experimentalDetectionData.longHairedFilmRef }}%</span
+            >标准参考值:≤{{ experimentalDetectionData.longHairedFilmRef }}%</span
             >
           </div>
           <div class="h-1"></div>
@@ -501,7 +501,7 @@ watch(
             >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
             >
             <span class="color-999999 font-size-16"
-            >标准参考值:≥{{ experimentalDetectionData.impuritiesRef }}%</span
+            >标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span
             >
           </div>
           <div class="h-1"></div>
