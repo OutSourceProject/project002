@@ -108,7 +108,7 @@ onUnmounted(() => {
                 <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">原产地：中国山东</p>
                 <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">
                   执行标准：{{ executiveStandard }}</p>
-                <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">生产商：羽绒生产商</p>
+                <p class="w-full text-center  color-999999 font-size-16 leading-relaxed">羽绒生产商：羽丰羽绒有限公司</p>
               </div>
             </div>
           </div>

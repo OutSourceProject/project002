@@ -1,30 +1,34 @@
 <script setup>
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import ArrowsButton from '@/components/ArrowsButton.vue'
+
 const props = defineProps({
-  imageList:{
+  imageList: {
     type: Array,
     required: true
   }
 })
+
 let startX
 let currentX
 const carouselTrackRef = ref(null)
 const currentIndex = ref(0)
-const totalItems = 2
+
 const updateCarousel = () => {
   if (carouselTrackRef.value) {
     carouselTrackRef.value.style.transform = `translateX(-${currentIndex.value * 100}%)`
   }
 }
+
 // 下一张幻灯片
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % totalItems
+  currentIndex.value = (currentIndex.value + 1) % props.imageList.length
   updateCarousel()
 }
+
 // 上一张幻灯片
 const prevSlide = () => {
-  currentIndex.value = (currentIndex.value - 1 + totalItems) % totalItems
+  currentIndex.value = (currentIndex.value - 1 + props.imageList.length) % props.imageList.length
   updateCarousel()
 }
 
@@ -32,36 +36,40 @@ const handleTouchStart = (e) => {
   startX = e.touches[0].clientX
   currentX = startX
 }
+
 const handleTouchMove = (e) => {
-  if (!startX) {
-    return
-  }
+  if (!startX) return
   currentX = e.touches[0].clientX
 }
+
 const leftHandle = () => {
-  if ([1].includes(currentIndex.value)) {
+  if (currentIndex.value > 0) {
     prevSlide()
   }
 }
+
 const rightHandle = () => {
-  if ([0].includes(currentIndex.value)) {
+  if (currentIndex.value < props.imageList.length - 1) {
     nextSlide()
   }
 }
+
 const handleTouchEnd = (e) => {
-  if (!startX) {
-    return
-  }
+  if (!startX) return
+
   const diff = startX - currentX
   const threshold = 50
+
   if (diff > threshold) {
     rightHandle()
   } else if (diff < -threshold) {
     leftHandle()
   }
+
   startX = 0
   currentX = 0
 }
+
 onMounted(() => {
   nextTick(() => {
     if (carouselTrackRef.value) {
@@ -71,6 +79,7 @@ onMounted(() => {
     }
   })
 })
+
 onUnmounted(() => {
   if (carouselTrackRef.value) {
     carouselTrackRef.value.removeEventListener('touchstart', handleTouchStart)
@@ -85,12 +94,12 @@ onUnmounted(() => {
     <div class="carousel-container">
       <div class="carousel-content">
         <div ref="carouselTrackRef" class="carousel-track">
-          <div v-for="(image,i) in imageList" :key="`image_${i}`" class="carousel-item">
+          <div v-for="(image, i) in imageList" :key="`image_${i}`" class="carousel-item">
             <div class="item-content">
               <div class="w-full flex items-center justify-center">
-                <img :src="image" alt="" class="w-full"/>
+                <img :src="image" alt="" class="w-full" />
               </div>
-              <div v-if="i===0" class="w-full flex items-center justify-center mt-5">
+              <div v-if="i === 0" class="w-full flex items-center justify-center mt-5">
                 <span class="color-999999 font-size-16">(本报告仅限本批次羽绒原始状态)</span>
               </div>
             </div>
@@ -100,7 +109,7 @@ onUnmounted(() => {
       <div class="controls">
         <ArrowsButton
           :active-index="currentIndex"
-          :total="totalItems - 1"
+          :total="imageList.length - 1"
           color="#999999"
           @left="leftHandle"
           @right="rightHandle"
