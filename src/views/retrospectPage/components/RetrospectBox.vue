@@ -266,7 +266,7 @@ watch(
               ></span
             >
             <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.downFeatherContentRef }}%</span
+              >标准参考值:≤{{ experimentalDetectionData.downFeatherContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
@@ -283,7 +283,7 @@ watch(
               ></span
             >
             <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.landFowlFeatherRef }}%</span
+              >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
             >
           </div>
           <div class="h-1"></div>
@@ -298,7 +298,7 @@ watch(
               >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
             >
             <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.fatContentRef }}%</span
+              >标准参考值:≤{{ experimentalDetectionData.fatContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
@@ -392,7 +392,7 @@ watch(
             ></span
             >
             <span class="color-999999 font-size-16"
-            >标准参考值:≥{{ experimentalDetectionData.landFowlFeatherRef }}%</span
+            >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
             >
           </div>
           <div class="h-1"></div>
@@ -407,7 +407,7 @@ watch(
             >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
             >
             <span class="color-999999 font-size-16"
-            >标准参考值:≥{{ experimentalDetectionData.fatContentRef }}%</span
+            >标准参考值:≤{{ experimentalDetectionData.fatContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
