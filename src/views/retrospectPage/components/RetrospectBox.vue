@@ -63,8 +63,9 @@ const goLicense = () => {
  * 生成实验检测数据的样式
  * @param val {number} 实际值
  * @param total  {number} 标准值
+ * @param last
  */
-const getBgStyle = (val, total) => {
+const getBgStyle = (val, total,last=0) => {
   const rightVal = Number(val) ? Number(val) : 0;
   const rightTotal = Number(total) ? Number(total) : 0;
   // 有一个为0就是都是白色
@@ -75,10 +76,10 @@ const getBgStyle = (val, total) => {
     return 'background: linear-gradient(to right,#7e7e7e 0%,#7e7e7e 100%);';
   }
   if (rightVal > rightTotal) {
-    const treaterPercent = (rightTotal / rightVal) * 90;
+    const treaterPercent = (rightTotal / rightVal) * 90+last;
     return `background: linear-gradient(to right,#ffffff 0%,#ffffff ${Math.max(treaterPercent - 10, 0)}%,rgba(151, 203, 230, 1) ${Math.max(treaterPercent, 0)}%,rgba(151, 203, 230, 1) 100%);`;
   }
-  const lessPercent = (rightVal / rightTotal) * 100;
+  const lessPercent = (rightVal / rightTotal) * 100+last;
   return `background: linear-gradient(to right,#7e7e7e 0%,#7e7e7e ${Math.max(lessPercent - 20, 0)}%,#ffffff ${Math.min(lessPercent, 100)}%,#ffffff 100%);`;
 };
 onMounted(() => {
@@ -247,7 +248,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-              :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef)"
+              :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
               class="w-full h-[6px] rounded-[6px]"
           ></div>
         </div>
@@ -267,7 +268,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-              :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef)"
+              :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-10)"
               class="w-full h-[6px] rounded-[6px]"
           ></div>
         </div>
@@ -414,7 +415,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-01"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
+            class="w-full h-[6px] rounded-[6px] bg-01"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -431,7 +434,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-02"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-10)"
+            class="w-full h-[6px] rounded-[6px] bg-02"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -448,7 +453,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-03"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.cleanliness,experimentalDetectionData.cleanlinessRef)"
+            class="w-full h-[6px] rounded-[6px] bg-03"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -468,7 +475,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-05"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.landFowlFeather,experimentalDetectionData.landFowlFeatherRef)"
+            class="w-full h-[6px] rounded-[6px] bg-05"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -485,7 +494,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-06"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.fatContent,experimentalDetectionData.fatContentRef)"
+            class="w-full h-[6px] rounded-[6px] bg-06"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -502,7 +513,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-07"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.impurities,experimentalDetectionData.impuritiesRef)"
+            class="w-full h-[6px] rounded-[6px] bg-07"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -519,7 +532,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.coloredDown,experimentalDetectionData.coloredDownRef)"
+            class="w-full h-[6px] rounded-[6px] bg-08"></div>
         </div>
       </div>
     </div>
@@ -538,7 +553,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-01"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
+            class="w-full h-[6px] rounded-[6px] bg-01"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -555,7 +572,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-02"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-10)"
+            class="w-full h-[6px] rounded-[6px] bg-02"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -575,7 +594,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-05"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.longHairedFilm,experimentalDetectionData.longHairedFilmRef)"
+            class="w-full h-[6px] rounded-[6px] bg-05"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -592,7 +613,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-06"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.impurities,experimentalDetectionData.impuritiesRef)"
+            class="w-full h-[6px] rounded-[6px] bg-06"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -609,6 +632,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.landFowlFeather,experimentalDetectionData.landFowlFeatherRef)"
+            class="w-full h-[6px] rounded-[6px] bg-06"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -625,7 +651,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
+          <div
+            :style="getBgStyle(experimentalDetectionData.coloredDown,experimentalDetectionData.coloredDownRef)"
+            class="w-full h-[6px] rounded-[6px] bg-08"></div>
         </div>
       </div>
       <div class="h-14"></div>
@@ -642,7 +670,9 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
+          <div
+            :style="getBgStyle(0,0)"
+            class="w-full h-[6px] rounded-[6px] bg-08"></div>
         </div>
       </div>
     </div>
