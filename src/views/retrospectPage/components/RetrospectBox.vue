@@ -59,7 +59,28 @@ const goLicense = () => {
   setScrollTop()
   router.push('/license')
 }
-
+/**
+ * 生成实验检测数据的样式
+ * @param val {number} 实际值
+ * @param total  {number} 标准值
+ */
+const getBgStyle = (val, total) => {
+  const rightVal = Number(val) ? Number(val) : 0;
+  const rightTotal = Number(total) ? Number(total) : 0;
+  // 有一个为0就是都是白色
+  if (!rightTotal || !rightVal) {
+    return 'background: linear-gradient(to right,#ffffff 0%,#ffffff 100%);';
+  }
+  if (rightTotal === rightVal) {
+    return 'background: linear-gradient(to right,#7e7e7e 0%,#7e7e7e 100%);';
+  }
+  if (rightVal > rightTotal) {
+    const treaterPercent = (rightTotal / rightVal) * 90;
+    return `background: linear-gradient(to right,#ffffff 0%,#ffffff ${Math.max(treaterPercent - 10, 0)}%,rgba(151, 203, 230, 1) ${Math.max(treaterPercent, 0)}%,rgba(151, 203, 230, 1) 100%);`;
+  }
+  const lessPercent = (rightVal / rightTotal) * 100;
+  return `background: linear-gradient(to right,#7e7e7e 0%,#7e7e7e ${Math.max(lessPercent - 20, 0)}%,#ffffff ${Math.min(lessPercent, 100)}%,#ffffff 100%);`;
+};
 onMounted(() => {
   const urlQuery = getDataFromUrl()
   yrcode.value = urlQuery?.yrcode || ''
@@ -727,73 +748,6 @@ $container_width: calc(100vw - 80px);
 
     .container-width {
       width: $container_width;
-
-      .bg-01 {
-        background: linear-gradient(
-          to right,
-          #ffffff 0%,
-          #ffffff 56%,
-          #ffffff 70.2%,
-          rgba(151, 203, 230, 1) 90%,
-          rgba(151, 203, 230, 1) 100%
-        );
-      }
-
-      .bg-02 {
-        background: linear-gradient(
-          to right,
-          #ffffff 0%,
-          #ffffff 56%,
-          #ffffff 60.2%,
-          rgba(151, 203, 230, 1) 80%,
-          rgba(151, 203, 230, 1) 100%
-        );
-      }
-
-      .bg-03 {
-        background: linear-gradient(
-          to right,
-          #ffffff 0%,
-          #ffffff 45%,
-          #ffffff 46.2%,
-          rgba(151, 203, 230, 1) 50%,
-          rgba(151, 203, 230, 1) 100%
-        );
-      }
-
-      .bg-04 {
-        background: linear-gradient(
-          to right,
-          #7e7e7e 0%,
-          #7e7e7e 45%,
-          #7e7e7e 55%,
-          #ffffff 75%,
-          #ffffff 100%
-        );
-      }
-
-      .bg-05 {
-        background: linear-gradient(
-          to right,
-          #ffffff 0%,
-          #ffffff 45%,
-          #ffffff 55%,
-          #ffffff 75%,
-          #ffffff 100%
-        );
-      }
-
-      .bg-06 {
-        background: linear-gradient(to right, #7e7e7e 0%, #7e7e7e 45%, #ffffff 55%, #ffffff 100%);
-      }
-
-      .bg-07 {
-        background: linear-gradient(to right, #7e7e7e 0%, #7e7e7e 1%, #ffffff 10%, #ffffff 100%);
-      }
-
-      .bg-08 {
-        background: linear-gradient(to right, #ffffff 0%, #ffffff 5%, #ffffff 20%, #ffffff 100%);
-      }
 
       .border-background {
         background-image: url('@/assets/images/border002.png');
