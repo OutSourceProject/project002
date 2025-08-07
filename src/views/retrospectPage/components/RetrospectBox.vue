@@ -256,8 +256,8 @@ watch(
           <div class="w-full h-[6px] rounded-[6px] bg-03"></div>
         </div>
       </div>
-      <div class="h-14" v-if="gbTb == 1"></div>
-      <div class="container-box relative z-1" v-if="gbTb == 1">
+      <div class="h-14"></div>
+      <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
             <span class="color-999999 font-size-16"
@@ -520,7 +520,6 @@ watch(
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-07"></div>
         </div>
       </div>
       <div class="h-14"></div>
