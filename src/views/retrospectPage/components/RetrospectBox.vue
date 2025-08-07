@@ -1,24 +1,24 @@
 <script setup>
-import { ref, onMounted, nextTick, watch } from 'vue'
-import { useRouter } from 'vue-router'
-import { getDataFromUrl } from '@/tools/about-url.js'
-import { useRetrospectRememberStore } from '@/stores/counter.js'
-import axios from 'axios'
-import CarouselTow from '@/views/retrospectPage/components/CarouselTow.vue'
-import CarouselRetrospectThreee from '@/views/retrospectPage/components/CarouselRetrospectThreee.vue'
-import CarouselOneVersion from '@/views/retrospectPage/components/CarouselOneVersion.vue'
+import { ref, onMounted, nextTick, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { getDataFromUrl } from '@/tools/about-url.js';
+import { useRetrospectRememberStore } from '@/stores/counter.js';
+import axios from 'axios';
+import CarouselTow from '@/views/retrospectPage/components/CarouselTow.vue';
+import CarouselRetrospectThreee from '@/views/retrospectPage/components/CarouselRetrospectThreee.vue';
+import CarouselOneVersion from '@/views/retrospectPage/components/CarouselOneVersion.vue';
 
-const useRetrospectRemember = useRetrospectRememberStore()
-const router = useRouter()
-const popperOptions = { modifiers: [{ name: 'offset', options: { offset: [50, 10] } }] }
+const useRetrospectRemember = useRetrospectRememberStore();
+const router = useRouter();
+const popperOptions = {modifiers: [{name: 'offset', options: {offset: [50, 10]}}]};
 const popperStyle = {
   borderRadius: '16px',
-}
-const yrcode = ref('')
-const batchNumInfo = ref('')
-const gbTb = ref(1)
-const logo = ref('')
-const executiveStandard = ref('')
+};
+const yrcode = ref('');
+const batchNumInfo = ref('');
+const gbTb = ref(1);
+const logo = ref('');
+const executiveStandard = ref('');
 const experimentalDetectionData = ref({
   downContent: '87.2',
   downContentRef: '85',
@@ -38,27 +38,27 @@ const experimentalDetectionData = ref({
   coloredDownRef: '1.0',
   longHairedFilm: '0',
   longHairedFilmRef: '0',
-})
+});
 const setScrollTop = () => {
-  const homePage = document.getElementById('home_page')
-  useRetrospectRemember.setPageScrollTop(homePage.scrollTop || 0)
-}
+  const homePage = document.getElementById('home_page');
+  useRetrospectRemember.setPageScrollTop(homePage.scrollTop || 0);
+};
 const goReport = () => {
-  setScrollTop()
-  router.push('/report')
-}
+  setScrollTop();
+  router.push('/report');
+};
 const goAbout = () => {
-  setScrollTop()
-  router.push('/about')
-}
+  setScrollTop();
+  router.push('/about');
+};
 const goAboutMe = () => {
-  setScrollTop()
-  router.push('/aboutMe')
-}
+  setScrollTop();
+  router.push('/aboutMe');
+};
 const goLicense = () => {
-  setScrollTop()
-  router.push('/license')
-}
+  setScrollTop();
+  router.push('/license');
+};
 /**
  * 生成实验检测数据的样式
  * @param val {number} 实际值
@@ -82,46 +82,46 @@ const getBgStyle = (val, total) => {
   return `background: linear-gradient(to right,#7e7e7e 0%,#7e7e7e ${Math.max(lessPercent - 20, 0)}%,#ffffff ${Math.min(lessPercent, 100)}%,#ffffff 100%);`;
 };
 onMounted(() => {
-  const urlQuery = getDataFromUrl()
-  yrcode.value = urlQuery?.yrcode || ''
-  getBatchInfo()
-  getProductLogo()
-  getExperimentalDetectionData()
-})
+  const urlQuery = getDataFromUrl();
+  yrcode.value = urlQuery?.yrcode || '';
+  getBatchInfo();
+  getProductLogo();
+  getExperimentalDetectionData();
+});
 
 const getBatchInfo = async () => {
   try {
-    const params = new URLSearchParams({ yrcode: yrcode.value })
-    const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`)
-    console.log(response.data.data.data)
-    batchNumInfo.value = response.data.data.data.batchNum
-    gbTb.value = response.data.data.data.gbTb
-    executiveStandard.value = response.data.data.data.executiveStandard
-    console.log(batchNumInfo.value)
+    const params = new URLSearchParams({yrcode: yrcode.value});
+    const response = await axios.get(`api/batchNumber/getBatchNumberPublic?${params}`);
+    console.log(response.data.data.data);
+    batchNumInfo.value = response.data.data.data.batchNum;
+    gbTb.value = response.data.data.data.gbTb;
+    executiveStandard.value = response.data.data.data.executiveStandard;
+    console.log(batchNumInfo.value);
   } catch (error) {
-    console.error('Error fetching batch info:', error)
-    throw error
+    console.error('Error fetching batch info:', error);
+    throw error;
   }
-}
+};
 
 const getProductLogo = async () => {
   try {
-    const params = new URLSearchParams({ yrcode: yrcode.value })
-    const response = await axios.get(`api/productLogo/getProductLogoPublic?${params}`)
-    logo.value = response.data.data.data.logo
+    const params = new URLSearchParams({yrcode: yrcode.value});
+    const response = await axios.get(`api/productLogo/getProductLogoPublic?${params}`);
+    logo.value = response.data.data.data.logo;
   } catch (error) {
-    console.error('Error fetching batch info:', error)
-    throw error
+    console.error('Error fetching batch info:', error);
+    throw error;
   }
-}
+};
 
 const getExperimentalDetectionData = async () => {
   try {
-    const params = new URLSearchParams({ yrcode: yrcode.value })
+    const params = new URLSearchParams({yrcode: yrcode.value});
     const response = await axios.get(
-      `api/experimentalDetectionData/getExperimentalDetectionDataPublic?${params}`,
-    )
-    const data = response.data.data.data
+        `api/experimentalDetectionData/getExperimentalDetectionDataPublic?${params}`,
+    );
+    const data = response.data.data.data;
 
     if (data) {
       experimentalDetectionData.value = {
@@ -143,26 +143,26 @@ const getExperimentalDetectionData = async () => {
         coloredDownRef: data.coloredDownRef || '',
         longHairedFilm: data.longHairedFilm || '',
         longHairedFilmRef: data.longHairedFilmRef || '',
-      }
+      };
     } else {
-      console.error('No data returned from API.')
+      console.error('No data returned from API.');
     }
   } catch (error) {
-    console.error('Error fetching batch info:', error)
-    throw error
+    console.error('Error fetching batch info:', error);
+    throw error;
   }
-}
+};
 watch(
-  () => useRetrospectRemember.pageScrollTop,
-  (val) => {
-    nextTick(() => {
-      if (document.getElementById('home_page')) {
-        document.getElementById('home_page').scrollTop = val
-      }
-    })
-  },
-  { immediate: true },
-)
+    () => useRetrospectRemember.pageScrollTop,
+    (val) => {
+      nextTick(() => {
+        if (document.getElementById('home_page')) {
+          document.getElementById('home_page').scrollTop = val;
+        }
+      });
+    },
+    {immediate: true},
+);
 </script>
 
 <template>
@@ -171,13 +171,13 @@ watch(
     <div class="h-7"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-[33px] box-border">
       <el-popover
-        :popper-options="popperOptions"
-        :popper-style="popperStyle"
-        :show-arrow="false"
-        placement="bottom"
+          :popper-options="popperOptions"
+          :popper-style="popperStyle"
+          :show-arrow="false"
+          placement="bottom"
       >
         <div class="flex items-center justify-between" @click="goAboutMe">
-          <img alt="" class="w-6" src="@/assets/images/avatar.png" />
+          <img alt="" class="w-6" src="@/assets/images/avatar.png"/>
           <span class="font-bold color-999999 font-size-16 mr-3">关于我们</span>
         </div>
         <template #reference>
@@ -188,34 +188,34 @@ watch(
         </template>
       </el-popover>
       <div class="h-5">
-        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png" />
+        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png"/>
       </div>
     </div>
     <div class="h-80"></div>
     <div class="h-10"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-6 box-border">
       <div class="h-10 flex items-center justify-end">
-        <img alt="" class="w-10" src="@/assets/images/snowflake.png" />
+        <img alt="" class="w-10" src="@/assets/images/snowflake.png"/>
       </div>
       <div class="h-10 flex items-center justify-end">
         <span class="text-white font-size-20 letter-space-1">羽丰羽绒</span>
       </div>
     </div>
     <div ref="carouselBoxRef" class="carousel-box">
-      <CarouselOneVersion :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard" />
+      <CarouselOneVersion :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard"/>
     </div>
     <div class="h-20"></div>
     <div class="h-5"></div>
     <div class="container-box relative z-1">
       <div class="container-width logo-container">
         <div class="w-1/3 flex items-center justify-center">
-          <img :src="logo" alt="" class="w-full" />
+          <img :src="logo" alt="" class="w-full"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png" />
+          <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-full" src="@/assets/images/snowflake-text002.png" />
+          <img alt="" class="w-full" src="@/assets/images/snowflake-text002.png"/>
         </div>
       </div>
     </div>
@@ -236,124 +236,166 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span
+            <span
+                class="color-999999 font-size-16"
+            >绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-01"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span
+            <span
+                class="color-999999 font-size-16"
+            >蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-02"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness }}mm</span></span
+            <span
+                class="color-999999 font-size-16"
+            >清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness }}mm</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≥{{ experimentalDetectionData.cleanlinessRef }}mm</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≥{{ experimentalDetectionData.cleanlinessRef }}mm</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-03"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.cleanliness,experimentalDetectionData.cleanlinessRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >绒丝+羽丝含量<span class="ml-5"
-                >{{ experimentalDetectionData.downFeatherContent }}%</span
-              ></span
+            <span
+                class="color-999999 font-size-16"
+            >绒丝+羽丝含量<span
+                class="ml-5"
+            >{{ experimentalDetectionData.downFeatherContent }}%</span
+            ></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≤{{ experimentalDetectionData.downFeatherContentRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≤{{ experimentalDetectionData.downFeatherContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-04"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.downFeatherContent,experimentalDetectionData.downFeatherContentRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >陆禽毛<span class="ml-5"
-                >{{ experimentalDetectionData.landFowlFeather }}%</span
-              ></span
+            <span
+                class="color-999999 font-size-16"
+            >陆禽毛<span
+                class="ml-5"
+            >{{ experimentalDetectionData.landFowlFeather }}%</span
+            ></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-05"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.landFowlFeather,experimentalDetectionData.landFowlFeatherRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
+            <span
+                class="color-999999 font-size-16"
+            >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≤{{ experimentalDetectionData.fatContentRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≤{{ experimentalDetectionData.fatContentRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-06"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.fatContent,experimentalDetectionData.fatContentRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
+            <span
+                class="color-999999 font-size-16"
+            >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-07"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.impurities,experimentalDetectionData.impuritiesRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
       <div class="h-14"></div>
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-              >异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span
+            <span
+                class="color-999999 font-size-16"
+            >异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span
             >
-            <span class="color-999999 font-size-16"
-              >标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span
+            <span
+                class="color-999999 font-size-16"
+            >标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span
             >
           </div>
           <div class="h-1"></div>
-          <div class="w-full h-[6px] rounded-[6px] bg-08"></div>
+          <div
+              :style="getBgStyle(experimentalDetectionData.coloredDown,experimentalDetectionData.coloredDownRef)"
+              class="w-full h-[6px] rounded-[6px]"
+          ></div>
         </div>
       </div>
     </div>
@@ -362,10 +404,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span
             >
           </div>
@@ -377,10 +421,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span
             >
           </div>
@@ -392,10 +438,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >清洁度<span class="ml-5">{{ experimentalDetectionData.cleanliness }}mm</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≥{{ experimentalDetectionData.cleanlinessRef }}mm</span
             >
           </div>
@@ -407,12 +455,15 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-            >陆禽毛<span class="ml-5"
+            <span
+                class="color-999999 font-size-16"
+            >陆禽毛<span
+                class="ml-5"
             >{{ experimentalDetectionData.landFowlFeather }}%</span
             ></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
             >
           </div>
@@ -424,10 +475,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >残脂率<span class="ml-5">{{ experimentalDetectionData.fatContent }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.fatContentRef }}%</span
             >
           </div>
@@ -439,10 +492,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span
             >
           </div>
@@ -454,10 +509,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span
             >
           </div>
@@ -471,10 +528,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >绒子含量<span class="ml-5">{{ experimentalDetectionData.downContent }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≥{{ experimentalDetectionData.downContentRef }}%</span
             >
           </div>
@@ -486,10 +545,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >蓬松度<span class="ml-5">{{ experimentalDetectionData.bulkiness }}cm</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≥{{ experimentalDetectionData.bulkinessRef }}cm</span
             >
           </div>
@@ -501,12 +562,15 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
-            >长毛片<span class="ml-5"
+            <span
+                class="color-999999 font-size-16"
+            >长毛片<span
+                class="ml-5"
             >{{ experimentalDetectionData.longHairedFilm }}%</span
             ></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.longHairedFilmRef }}%</span
             >
           </div>
@@ -518,10 +582,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >杂质<span class="ml-5">{{ experimentalDetectionData.impurities }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.impuritiesRef }}%</span
             >
           </div>
@@ -533,10 +599,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >陆禽毛<span class="ml-5">{{ experimentalDetectionData.landFowlFeather }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.landFowlFeatherRef }}%</span
             >
           </div>
@@ -547,10 +615,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >异色毛绒<span class="ml-5">{{ experimentalDetectionData.coloredDown }}%</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:≤{{ experimentalDetectionData.coloredDownRef }}%</span
             >
           </div>
@@ -562,10 +632,12 @@ watch(
       <div class="container-box relative z-1">
         <div class="container-width">
           <div class="w-full flex items-center justify-between">
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >气味<span class="ml-5">无明显异味</span></span
             >
-            <span class="color-999999 font-size-16"
+            <span
+                class="color-999999 font-size-16"
             >标准参考值:无明显异味</span
             >
           </div>
@@ -577,7 +649,7 @@ watch(
     <div class="h-32"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
-        <img alt="" class="w-full" src="@/assets/images/border001.png" />
+        <img alt="" class="w-full" src="@/assets/images/border001.png"/>
       </div>
     </div>
     <div class="h-6"></div>
@@ -607,7 +679,7 @@ watch(
     <div class="h-6"></div>
     <div class="container-box relative z-1">
       <div class="container-width">
-        <img alt="" class="w-full" src="@/assets/images/border001.png" />
+        <img alt="" class="w-full" src="@/assets/images/border001.png"/>
       </div>
     </div>
     <div class="h-32"></div>
@@ -626,7 +698,7 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="@/assets/images/small-log001.png" />
+          <img alt="" class="w-2/3" src="@/assets/images/small-log001.png"/>
         </div>
         <div class="w-3/4">
           <p class="font-size-16 color-999999 leading-6">
@@ -643,7 +715,7 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="@/assets/images/small-log002.png" />
+          <img alt="" class="w-2/3" src="@/assets/images/small-log002.png"/>
         </div>
         <div class="w-3/4">
           <p class="font-size-16 color-999999 leading-6">
@@ -658,7 +730,7 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="@/assets/images/small-log003.png" />
+          <img alt="" class="w-2/3" src="@/assets/images/small-log003.png"/>
         </div>
         <div class="w-3/4">
           <p class="font-size-16 color-999999 leading-6">
@@ -675,12 +747,13 @@ watch(
     <div class="container-box relative z-1">
       <div class="container-width flex items-center justify-start">
         <div class="w-1/4 flex items-center justify-start">
-          <img alt="" class="w-2/3" src="@/assets/images/small-log004.png" />
+          <img alt="" class="w-2/3" src="@/assets/images/small-log004.png"/>
         </div>
         <div class="w-3/4">
           <p class="font-size-16 color-999999 leading-6">
-            <span class="font-semibold color-595757 mr-1"
-              >IDFB（International Down & Feather Bureau）</span
+            <span
+                class="font-semibold color-595757 mr-1"
+            >IDFB（International Down & Feather Bureau）</span
             >
             作为与世界各国羽绒相关机构合作的国际羽绒协会，积极开发并宣传各国的羽绒填充物标准，定期评估羽绒产品检测机构，
             <span class="font-semibold color-595757 mr-1">向消费者提供明确的标准。</span>
@@ -701,7 +774,7 @@ watch(
         </div>
       </div>
       <div class="h-20"></div>
-      <CarouselRetrospectThreee />
+      <CarouselRetrospectThreee/>
       <div class="h-20"></div>
     </div>
   </div>
@@ -740,9 +813,9 @@ $container_width: calc(100vw - 80px);
     .logo-container {
       @apply rounded-2xl flex items-center justify-between p-10 box-border;
       background: radial-gradient(
-        circle,
-        rgba(205, 205, 205, 0.1) 5%,
-        rgba(255, 255, 255, 0.8) 100%
+              circle,
+              rgba(205, 205, 205, 0.1) 5%,
+              rgba(255, 255, 255, 0.8) 100%
       );
     }
 
