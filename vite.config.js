@@ -58,12 +58,12 @@ export default defineConfig(({ mode }) => {
     plugins: plugins,
     server: {
       //host: '0.0.0.0',
-      //proxy: {
-        //'/api': {
-          //target: 'http://127.0.0.1:8888',
-          //changeOrigin: true,
-        //},
-      //},
+      proxy: {
+        '/api': {
+          target: 'https://admin.yufengyurong.com',
+          changeOrigin: true,
+        },
+      },
     },
     esbuild: {
       legalComments: 'none',
