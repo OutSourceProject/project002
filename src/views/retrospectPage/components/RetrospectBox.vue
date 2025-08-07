@@ -248,7 +248,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-              :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
+              :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-25)"
               class="w-full h-[6px] rounded-[6px]"
           ></div>
         </div>
@@ -268,7 +268,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-              :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-10)"
+              :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-25)"
               class="w-full h-[6px] rounded-[6px]"
           ></div>
         </div>
@@ -416,7 +416,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
+            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-25)"
             class="w-full h-[6px] rounded-[6px] bg-01"></div>
         </div>
       </div>
@@ -435,7 +435,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-            :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-10)"
+            :style="getBgStyle(experimentalDetectionData.bulkiness,experimentalDetectionData.bulkinessRef,-25)"
             class="w-full h-[6px] rounded-[6px] bg-02"></div>
         </div>
       </div>
@@ -554,7 +554,7 @@ watch(
           </div>
           <div class="h-1"></div>
           <div
-            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-10)"
+            :style="getBgStyle(experimentalDetectionData.downContent,experimentalDetectionData.downContentRef,-25)"
             class="w-full h-[6px] rounded-[6px] bg-01"></div>
         </div>
       </div>
