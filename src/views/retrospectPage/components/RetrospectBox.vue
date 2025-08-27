@@ -189,7 +189,7 @@ watch(
         </template>
       </el-popover>
       <div class="h-5">
-        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png"/>
+<!--        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png"/>-->
       </div>
     </div>
     <div class="h-80"></div>
@@ -209,14 +209,14 @@ watch(
     <div class="h-5"></div>
     <div class="container-box relative z-1">
       <div class="container-width logo-container">
-        <div class="w-1/3 flex items-center justify-center">
+        <div class="w-1/2 flex items-center justify-center">
           <img :src="logo" alt="" class="w-full"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
           <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png"/>
         </div>
         <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-full" src="@/assets/images/snowflake-text002.png"/>
+          <img alt="" class="w-full" src="@/assets/images/yufengyurong.png"/>
         </div>
       </div>
     </div>

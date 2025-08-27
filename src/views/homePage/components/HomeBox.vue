@@ -52,7 +52,7 @@ onBeforeMount(() => {
 <template>
   <div class="first-page">
     <div class="fist-text">
-      <img alt="" src="@/assets/images/text001.png" class="w-[140px]"/>
+<!--      <img alt="" src="@/assets/images/text001.png" class="w-[140px]"/>-->
     </div>
     <div class="h-36"></div>
     <div class="w-full flex items-center justify-center">
@@ -70,7 +70,7 @@ onBeforeMount(() => {
     <div class="h-8"></div>
     <div @click="goRetrospect">
       <div class="w-full flex items-center justify-center">
-        <span class="text-gray-500 font-size-20">立即追溯</span>
+        <span class="text-gray-500 font-size-20">更多详情，请点击</span>
       </div>
       <div class="h-2"></div>
       <div class="w-full flex items-center justify-center">
