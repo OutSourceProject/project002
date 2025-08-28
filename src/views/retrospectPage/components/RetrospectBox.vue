@@ -171,8 +171,9 @@ watch(
     <div class="swan-box"></div>
     <div class="h-7"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-[33px] box-border">
-      <div @click="goAboutMe">
-        <span class="font-bold text-white font-size-16 mr-3">关于我们</span>
+      <div class="flex items-center justify-start" @click="goAboutMe">
+        <img alt="" class="w-6" src="@/assets/images/avatar.svg"/>
+        <span class="font-bold text-white font-size-16 ml-1">关于我们</span>
       </div>
       <div class="h-5">
 <!--        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png"/>-->
