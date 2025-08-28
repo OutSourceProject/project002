@@ -195,14 +195,14 @@ watch(
     <div class="h-5"></div>
     <div class="container-box relative z-1">
       <div class="container-width logo-container">
-        <div class="w-1/2 flex items-center justify-center">
+        <div class="flex items-center justify-center flex-1">
           <img :src="logo" alt="" class="w-full"/>
         </div>
-        <div class="w-1/3 flex items-center justify-center">
+        <div class="w-4 flex items-center justify-center">
           <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png"/>
         </div>
-        <div class="w-1/3 flex items-center justify-center">
-          <img alt="" class="w-full" src="@/assets/images/yufengyurong.png"/>
+        <div class="flex items-center justify-center flex-1">
+          <img alt="" class="w-9/12" src="@/assets/images/yufengyurong.png"/>
         </div>
       </div>
     </div>
@@ -827,7 +827,7 @@ $container_width: calc(100vw - 80px);
     justify-content: center;
 
     .logo-container {
-      @apply rounded-2xl flex items-center justify-between p-10 box-border;
+      @apply rounded-2xl flex items-center justify-between p-2 box-border;
       background: radial-gradient(
               circle,
               rgba(205, 205, 205, 0.1) 5%,
