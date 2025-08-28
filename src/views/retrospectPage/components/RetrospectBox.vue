@@ -171,23 +171,9 @@ watch(
     <div class="swan-box"></div>
     <div class="h-7"></div>
     <div class="w-full flex justify-between items-center relative z-1 px-[33px] box-border">
-      <el-popover
-          :popper-options="popperOptions"
-          :popper-style="popperStyle"
-          :show-arrow="false"
-          placement="bottom"
-      >
-        <div class="flex items-center justify-between" @click="goAboutMe">
-          <img alt="" class="w-6" src="@/assets/images/avatar.png"/>
-          <span class="font-bold color-999999 font-size-16 mr-3">关于我们</span>
-        </div>
-        <template #reference>
-          <div class="w-8 h-5 flex flex-col gap-y-1">
-            <div class="w-6 h-1 bg-white rounded"></div>
-            <div class="w-6 h-1 bg-white rounded"></div>
-          </div>
-        </template>
-      </el-popover>
+      <div @click="goAboutMe">
+        <span class="font-bold text-white font-size-16 mr-3">关于我们</span>
+      </div>
       <div class="h-5">
 <!--        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png"/>-->
       </div>
