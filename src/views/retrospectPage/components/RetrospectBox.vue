@@ -186,7 +186,7 @@ watch(
         <img alt="" class="w-10" src="@/assets/images/snowflake.png"/>
       </div>
       <div class="h-10 flex items-center justify-end">
-        <span class="text-white font-size-20 letter-space-1">羽丰羽绒</span>
+        <span class="text-white font-size-20 letter-space-1"></span>
       </div>
     </div>
     <div ref="carouselBoxRef" class="carousel-box">
