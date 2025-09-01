@@ -57,7 +57,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: plugins,
     server: {
-      //host: '0.0.0.0',
+      // host: '192.168.43.168',
       proxy: {
         '/api': {
           target: 'https://admin.yufengyurong.com',

@@ -42,16 +42,29 @@ const handleTouchMove = (e) => {
   currentX = e.touches[0].clientX
 }
 
-const leftHandle = () => {
-  if (currentIndex.value > 0) {
-    prevSlide()
+const moveHandle = () => {
+  switch (currentIndex.value) {
+    case 0:
+      nextSlide();
+      break;
+    case 1:
+      prevSlide();
+      break;
+    default:
+      if (currentIndex.value > 1) {
+        currentIndex.value = 1;
+      }
+      if (currentIndex.value < 0) {
+        currentIndex.value = 0;
+      }
   }
+};
+const leftHandle = () => {
+  moveHandle()
 }
 
 const rightHandle = () => {
-  if (currentIndex.value < props.imageList.length - 1) {
-    nextSlide()
-  }
+  moveHandle()
 }
 
 const handleTouchEnd = (e) => {

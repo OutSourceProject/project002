@@ -46,15 +46,28 @@ const handleTouchMove = (e) => {
   }
   currentX = e.touches[0].clientX;
 };
-const leftHandle = () => {
-  if ([1].includes(currentIndex.value)) {
-    prevSlide();
+const moveHandle = () => {
+  switch (currentIndex.value) {
+    case 0:
+      nextSlide();
+      break;
+    case 1:
+      prevSlide();
+      break;
+    default:
+      if (currentIndex.value > 1) {
+        currentIndex.value = 1;
+      }
+      if (currentIndex.value < 0) {
+        currentIndex.value = 0;
+      }
   }
 };
+const leftHandle = () => {
+  moveHandle();
+};
 const rightHandle = () => {
-  if ([0].includes(currentIndex.value)) {
-    nextSlide();
-  }
+  moveHandle();
 };
 const handleTouchEnd = (e) => {
   if (!startX) {
@@ -181,7 +194,8 @@ onUnmounted(() => {
             @apply rounded-2xl;
           }
         }
-        .item-active{
+
+        .item-active {
           opacity: 1;
           transition: all 1s ease-in-out;
         }
