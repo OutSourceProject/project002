@@ -189,7 +189,7 @@ watch(
         <span class="text-white font-size-20 letter-space-1"></span>
       </div>
     </div>
-    <div ref="carouselBoxRef" class="carousel-box">
+    <div class="carousel-box">
       <CarouselOneVersion :batch-num-info="batchNumInfo" :executiveStandard="executiveStandard"/>
     </div>
     <div class="h-20"></div>

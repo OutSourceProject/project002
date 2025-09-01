@@ -21,7 +21,7 @@ const currentIndex = ref(0);
 const totalItems = 2;
 const updateCarousel = () => {
   if (carouselTrackRef.value) {
-    carouselTrackRef.value.style.transform = `translateX(-${currentIndex.value * 100}%)`;
+    carouselTrackRef.value.style.transform = `translateX(-${currentIndex.value * 50}%)`;
   }
 };
 
@@ -175,10 +175,11 @@ onUnmounted(() => {
       .carousel-track {
         display: flex;
         height: 100%;
+        width: 200%;
         transition: transform 0.6s ease-in-out;
 
         .carousel-item {
-          min-width: 100%;
+          flex-basis: 50%;
           display: flex;
           flex-direction: column;
           justify-content: center;
