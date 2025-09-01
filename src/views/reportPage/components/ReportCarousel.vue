@@ -1,46 +1,54 @@
 <script setup>
-import { ref, nextTick, onMounted, onUnmounted } from 'vue'
-import ArrowsButton from '@/components/ArrowsButton.vue'
+import { ref, nextTick, onMounted, onUnmounted, computed } from 'vue';
+import ArrowsButton from '@/components/ArrowsButton.vue';
 
 const props = defineProps({
   imageList: {
     type: Array,
     required: true
   }
-})
+});
 
-let startX
-let currentX
-const carouselTrackRef = ref(null)
-const currentIndex = ref(0)
-
+let startX;
+let currentX;
+const carouselTrackRef = ref(null);
+const currentIndex = ref(0);
+const totalWidth = computed(() => {
+  return `${props.imageList.length}00%`;
+});
+const imageFlexBasic = computed(() => {
+  if (props.imageList.length) {
+    return `${100 / props.imageList.length}%`;
+  }
+  return '100%';
+});
 const updateCarousel = () => {
   if (carouselTrackRef.value) {
-    carouselTrackRef.value.style.transform = `translateX(-${currentIndex.value * 50}%)`
+    carouselTrackRef.value.style.transform = `translateX(-${currentIndex.value * 100 / (props.imageList.length || 1)}%)`;
   }
-}
+};
 
 // 下一张幻灯片
 const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % props.imageList.length
-  updateCarousel()
-}
+  currentIndex.value = (currentIndex.value + 1) % props.imageList.length;
+  updateCarousel();
+};
 
 // 上一张幻灯片
 const prevSlide = () => {
-  currentIndex.value = (currentIndex.value - 1 + props.imageList.length) % props.imageList.length
-  updateCarousel()
-}
+  currentIndex.value = (currentIndex.value - 1 + props.imageList.length) % props.imageList.length;
+  updateCarousel();
+};
 
 const handleTouchStart = (e) => {
-  startX = e.touches[0].clientX
-  currentX = startX
-}
+  startX = e.touches[0].clientX;
+  currentX = startX;
+};
 
 const handleTouchMove = (e) => {
-  if (!startX) return
-  currentX = e.touches[0].clientX
-}
+  if (!startX) return;
+  currentX = e.touches[0].clientX;
+};
 
 const moveHandle = () => {
   switch (currentIndex.value) {
@@ -60,46 +68,49 @@ const moveHandle = () => {
   }
 };
 const leftHandle = () => {
-  moveHandle()
+  if (currentIndex.value > 0 && currentIndex.value <= props.imageList.length) {
+    prevSlide()
+  }
 }
-
 const rightHandle = () => {
-  moveHandle()
+  if (currentIndex.value < props.imageList.length && currentIndex.value>=0) {
+    nextSlide()
+  }
 }
 
 const handleTouchEnd = (e) => {
-  if (!startX) return
+  if (!startX) return;
 
-  const diff = startX - currentX
-  const threshold = 50
+  const diff = startX - currentX;
+  const threshold = 50;
 
   if (diff > threshold) {
-    rightHandle()
+    rightHandle();
   } else if (diff < -threshold) {
-    leftHandle()
+    leftHandle();
   }
 
-  startX = 0
-  currentX = 0
-}
+  startX = 0;
+  currentX = 0;
+};
 
 onMounted(() => {
   nextTick(() => {
     if (carouselTrackRef.value) {
-      carouselTrackRef.value.addEventListener('touchstart', handleTouchStart)
-      carouselTrackRef.value.addEventListener('touchmove', handleTouchMove)
-      carouselTrackRef.value.addEventListener('touchend', handleTouchEnd)
+      carouselTrackRef.value.addEventListener('touchstart', handleTouchStart);
+      carouselTrackRef.value.addEventListener('touchmove', handleTouchMove);
+      carouselTrackRef.value.addEventListener('touchend', handleTouchEnd);
     }
-  })
-})
+  });
+});
 
 onUnmounted(() => {
   if (carouselTrackRef.value) {
-    carouselTrackRef.value.removeEventListener('touchstart', handleTouchStart)
-    carouselTrackRef.value.removeEventListener('touchmove', handleTouchMove)
-    carouselTrackRef.value.removeEventListener('touchend', handleTouchEnd)
+    carouselTrackRef.value.removeEventListener('touchstart', handleTouchStart);
+    carouselTrackRef.value.removeEventListener('touchmove', handleTouchMove);
+    carouselTrackRef.value.removeEventListener('touchend', handleTouchEnd);
   }
-})
+});
 </script>
 
 <template>
@@ -110,7 +121,7 @@ onUnmounted(() => {
           <div v-for="(image, i) in imageList" :key="`image_${i}`" class="carousel-item">
             <div class="item-content">
               <div class="w-full flex items-center justify-center">
-                <img :src="image" alt="" class="w-full" />
+                <img :src="image" alt="" class="w-full"/>
               </div>
               <div v-if="i === 0" class="w-full flex items-center justify-center mt-5">
                 <span class="color-999999 font-size-16">(本报告仅限本批次羽绒原始状态)</span>
@@ -121,11 +132,11 @@ onUnmounted(() => {
       </div>
       <div class="controls">
         <ArrowsButton
-          :active-index="currentIndex"
-          :total="imageList.length - 1"
-          color="#999999"
-          @left="leftHandle"
-          @right="rightHandle"
+            :active-index="currentIndex"
+            :total="imageList.length - 1"
+            color="#999999"
+            @left="leftHandle"
+            @right="rightHandle"
         />
       </div>
     </div>
@@ -146,14 +157,16 @@ onUnmounted(() => {
       .carousel-track {
         display: flex;
         height: 100%;
-        width: 200%;
+        width: v-bind(totalWidth);
         transition: transform 0.6s ease-in-out;
+
         .carousel-item {
-          flex-basis: 50%;
+          flex-basis: v-bind(imageFlexBasic);
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+
           .item-content {
             max-width: 600px;
             text-align: center;
@@ -161,6 +174,7 @@ onUnmounted(() => {
         }
       }
     }
+
     .controls {
       display: flex;
       justify-content: center;
