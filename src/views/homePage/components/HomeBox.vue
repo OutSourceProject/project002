@@ -82,7 +82,7 @@ onBeforeMount(() => {
         <img alt="" class="w-full" src="@/assets/images/snowflake.png"/>
       </div>
       <div class="h-12 flex items-center justify-end">
-        <span class="color-999999 font-size-20 letter-space-1">羽丰羽绒</span>
+        <span class="color-999999 font-size-20 letter-space-1"></span>
       </div>
     </div>
 
