@@ -203,7 +203,7 @@ watch(
           <img alt="" class="w-2" src="@/assets/images/icon-x@3x.png"/>
         </div>
         <div class="flex items-center justify-center flex-1">
-          <img alt="" class="w-9/12" src="@/assets/images/yflogo.png"/>
+          <img alt="" class="w-9/12" src="@/assets/images/logo2.png"/>
         </div>
       </div>
     </div>
