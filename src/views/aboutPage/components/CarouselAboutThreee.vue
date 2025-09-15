@@ -116,20 +116,13 @@ onUnmounted(() => {
       </div>
       <div class="guide-carousel-container">
         <div class="w-full flex items-center justify-start">
-          <img alt="" class="w-full" src="@/assets/images/picture003.png"/>
+          <img alt="" class="w-full" src="@/assets/images/picture003.jpg"/>
         </div>
         <div class="h-5"></div>
         <div class="mb-3">
           <p class="font-size-16 color-999999 leading-5 break-all">
-            羽丰羽绒品牌焕新升级，重磅推出“溯羽系统”。该系统由【中国羽绒工业协会】会员企业羽丰羽绒有限公司研发运营，是
-            <span class="color-595757 font-bold">【可追溯羽绒信息平台】</span>
-            ，并已加入由中国羽绒工业协会主导的
-            <span class="color-595757 font-bold">【全球羽绒追溯系统】。</span>
-          </p>
-          <div class="h-4"></div>
-          <p class="font-size-16 color-999999 leading-5 break-all">
-            符合“溯羽安心羽绒”标准及技术要求、并通过溯羽系统实现全程追溯的羽绒材料，正式命名为
-            <span class="color-595757 mr-2 font-bold">“溯羽安心羽绒”。</span>
+            羽丰羽绒设有独立的专业质量检测实验室，实验室配置符合行业规范要求。所有质检人员均已通过广检集团（简称“广检”）组织的专业技能培训，并持有该机构统一颁发的合格证书。
+            对于每一批次生产的羽绒产品，公司均严格遵循广检制定的羽绒检测标准执行检测。只有在检测结果完全符合标准要求，该批次羽绒产品才会安排出库并交付至客户，确保流向市场的每一批产品均满足质量承诺。
           </p>
         </div>
       </div>

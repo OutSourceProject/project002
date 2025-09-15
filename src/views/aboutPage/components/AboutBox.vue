@@ -8,7 +8,7 @@ import CarouselAboutThreee from "@/views/aboutPage/components/CarouselAboutThree
     <div class="w-full flex justify-between items-center box-border pr-10">
       <div class="w-8 h-5 flex flex-col gap-y-1"></div>
       <div class="h-5">
-        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">
+<!--        <img alt="/" class="h-full w-auto" src="@/assets/images/snowflake-text001.png">-->
       </div>
     </div>
     <div class="h-6"></div>
